@@ -989,6 +989,8 @@ export function injectService(
     throw new SchematicsException(`No constructor found in ${config.path}.`);
   }
 
+  const isCartServiceMigration = config.serviceName === 'ConfiguratorUtilsService';
+
   const constructorParameters = getConstructorParameterList(
     config.constructorNode
   );
@@ -1004,7 +1006,9 @@ export function injectService(
   config.propertyName = config.propertyName
     ? strings.camelize(config.propertyName)
     : strings.camelize(config.serviceName);
-
+    if (isCartServiceMigration){
+      console.log("CHHI property name: " + config.propertyName);
+    }
   config.propertyType =
     config.propertyType ?? strings.classify(config.serviceName);
 
@@ -1013,7 +1017,9 @@ export function injectService(
   toInsert += `${config.propertyName}: ${config.propertyType}`;
 
   if (config.isArray) toInsert += '[]';
-
+  if (isCartServiceMigration){   
+    console.log("CHHI before InsertChange, toInsert: " + JSON.stringify(toInsert));
+  }
   return new InsertChange(config.path, position, toInsert);
 }
 

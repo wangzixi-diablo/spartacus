@@ -9,7 +9,7 @@ import {
   getTsSourceFile,
   InsertDirection,
   isCandidateForConstructorDeprecation,
-  removeConstructorParam,
+  removeConstructorParam
 } from '../../../shared/utils/file-utils';
 import { getSourceRoot } from '../../../shared/utils/workspace-utils';
 
@@ -25,7 +25,12 @@ export function migrateConstructorDeprecation(
   for (const originalSource of sourceFiles) {
     const sourcePath = originalSource.fileName;
 
+   
+
     for (const constructorDeprecation of constructorDeprecations) {
+      const isCartMigration = constructorDeprecation.class === 'ConfiguratorCartService';
+
+
       if (
         !isCandidateForConstructorDeprecation(
           originalSource,
@@ -34,9 +39,16 @@ export function migrateConstructorDeprecation(
       ) {
         continue;
       }
+      if (isCartMigration){
+        console.log('CHHI is cart migration');
+      }
 
       for (const newConstructorParam of constructorDeprecation.addParams ||
         []) {
+          if (isCartMigration){
+            console.log('CHHI constructor param: ' + newConstructorParam.className);
+            console.log('CHHI constructor param: ' + JSON.stringify(newConstructorParam));
+          }
         // 'source' has to be reloaded after each committed change
         const source = getTsSourceFile(tree, sourcePath);
         const nodes = getSourceNodes(source);
