@@ -43,7 +43,7 @@ const CART_SERVICE_VALID_TEST_CLASS = `
         protected cartStore: Store<StateWithMultiCart>,
         protected store: Store<StateWithConfigurator>,
         protected activeCartService: ActiveCartService,
-        protected commonConfigUtilsService: CommonConfiguratorUtilsService,
+        protected commonUtilsService: CommonConfiguratorUtilsService,
         protected checkoutFacade: CheckoutFacade,
         protected userIdService: UserIdService,
       ) {
@@ -71,7 +71,7 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
     import {
       ConfiguratorCartService,
       ConfiguratorGroupsService,
-      ConfiguratorStorefrontUtilsService
+      ConfiguratorStorefrontUtilsService, ConfiguratorUtilsService
     } from '@spartacus/product-configurator/rulebased';
     import { 
        CommonConfiguratorUtilsService 
@@ -82,9 +82,9 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
         protected cartStore: Store<StateWithMultiCart>,
         protected store: Store<StateWithConfigurator>,
         protected activeCartService: ActiveCartService,
-        protected commonConfigUtilsService: CommonConfiguratorUtilsService,
+        protected commonUtilsService: CommonConfiguratorUtilsService,
         protected checkoutFacade: CheckoutFacade,
-        protected userIdService: UserIdService,
+        protected userIdService: UserIdService, configuratorUtilsService: ConfiguratorUtilsService,
       ) {
         super(
           cartStore, 
@@ -92,7 +92,7 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
           activeCartService, 
           commonConfigUtilsService,
           checkoutFacade,
-          userIdService);
+          userIdService, configuratorUtilsService);
       }
     }
 `; 
