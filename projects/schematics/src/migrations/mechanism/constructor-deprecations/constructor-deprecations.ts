@@ -45,8 +45,7 @@ export function migrateConstructorDeprecation(
 
       for (const newConstructorParam of constructorDeprecation.addParams ||
         []) {
-          if (isCartMigration){
-            console.log('CHHI constructor param: ' + newConstructorParam.className);
+          if (isCartMigration){             
             console.log('CHHI constructor param: ' + JSON.stringify(newConstructorParam));
           }
         // 'source' has to be reloaded after each committed change
@@ -65,6 +64,9 @@ export function migrateConstructorDeprecation(
 
       for (const constructorParamToRemove of constructorDeprecation.removeParams ||
         []) {
+          if (isCartMigration){          
+            console.log('CHHI now removing: ' + JSON.stringify(constructorParamToRemove));
+          }
         // 'source' has to be reloaded after each committed change
         const source = getTsSourceFile(tree, sourcePath);
         const nodes = getSourceNodes(source);

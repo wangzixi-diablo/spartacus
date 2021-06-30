@@ -92,7 +92,7 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
           activeCartService, 
           commonUtilsService,
           checkoutFacade,
-          userIdService, configuratorUtilsService );
+          userIdService, configuratorUtilsService);
       }
     }
 `; 

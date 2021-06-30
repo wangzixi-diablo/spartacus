@@ -583,6 +583,10 @@ export function addConstructorParam(
   }
 
   const paramName = getParamName(source, constructorNode, paramToAdd);
+  const isCartServiceMigration = paramToAdd.className === 'ConfiguratorUtilsService';
+  if (isCartServiceMigration){
+    console.log("CHHI param name for super constructor: " + paramName);
+  }
   changes.push(
     updateConstructorSuperNode(
       sourcePath,
@@ -672,7 +676,8 @@ function getParamName(
   }
 
   for (const constructorParameter of constructorParameters) {
-    if (constructorParameter.getText().includes(classType.className)) {
+    console.log('CHHI constructor par text: ' + constructorParameter.getText());
+    if (constructorParameter.getText().includes(' ' + classType.className)) {
       const paramVariableNode = constructorParameter
         .getChildren()
         .find((node) => node.kind === ts.SyntaxKind.Identifier);
@@ -952,6 +957,8 @@ function updateConstructorSuperNode(
   if (callBlock.length === 0) {
     throw new SchematicsException('No constructor body found.');
   }
+
+   
 
   const callExpression = findNodes(callBlock[0], ts.SyntaxKind.CallExpression);
 
