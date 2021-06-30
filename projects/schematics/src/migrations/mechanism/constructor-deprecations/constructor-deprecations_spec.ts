@@ -51,7 +51,7 @@ const CART_SERVICE_VALID_TEST_CLASS = `
           cartStore, 
           store, 
           activeCartService, 
-          commonConfigUtilsService,
+          commonUtilsService,
           checkoutFacade,
           userIdService);
       }
@@ -90,7 +90,7 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
           cartStore, 
           store, 
           activeCartService, 
-          commonConfigUtilsService,
+          commonUtilsService,
           checkoutFacade,
           userIdService, configuratorUtilsService);
       }
