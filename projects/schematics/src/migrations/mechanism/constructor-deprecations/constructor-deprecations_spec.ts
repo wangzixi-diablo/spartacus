@@ -79,7 +79,7 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
 
     export class InheritedService extends ConfiguratorCartService {
       constructor(
-        protected cartStore: Store<StateWithMultiCart>,
+        
         protected store: Store<StateWithConfigurator>,
         protected activeCartService: ActiveCartService,
         protected commonUtilsService: CommonConfiguratorUtilsService,
@@ -87,12 +87,12 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
         protected userIdService: UserIdService, configuratorUtilsService: ConfiguratorUtilsService,
       ) {
         super(
-          cartStore, 
+           
           store, 
           activeCartService, 
           commonUtilsService,
           checkoutFacade,
-          userIdService, configuratorUtilsService);
+          userIdService, configuratorUtilsService );
       }
     }
 `; 
