@@ -3,11 +3,11 @@ import { TempScopedNodeJsSyncHost } from '@angular-devkit/core/node/testing';
 import { HostTree, Tree } from '@angular-devkit/schematics';
 import {
   SchematicTestRunner,
-  UnitTestTree,
+  UnitTestTree
 } from '@angular-devkit/schematics/testing';
 import {
   getSourceNodes,
-  isImported,
+  isImported
 } from '@schematics/angular/utility/ast-utils';
 import * as shx from 'shelljs';
 import ts from 'typescript';
@@ -16,8 +16,87 @@ import {
   getConstructor,
   getParams,
   runMigration,
-  writeFile,
+  writeFile
 } from '../../../shared/utils/test-utils';
+
+const CART_SERVICE_VALID_TEST_CLASS = `
+    import { select, Store } from '@ngrx/store';
+    import { CheckoutFacade } from '@spartacus/checkout/root';
+    import {
+      ActiveCartService,
+      OCC_USER_ID_CURRENT,
+      StateUtils,
+      StateWithMultiCart,
+      UserIdService,
+    } from '@spartacus/core';    
+    import {
+      ConfiguratorCartService,
+      ConfiguratorGroupsService,
+      ConfiguratorStorefrontUtilsService
+    } from '@spartacus/product-configurator/rulebased';
+    import { 
+       CommonConfiguratorUtilsService 
+    } from '@spartacus/product-configurator/common';  
+
+    export class InheritedService extends ConfiguratorCartService {
+      constructor(
+        protected cartStore: Store<StateWithMultiCart>,
+        protected store: Store<StateWithConfigurator>,
+        protected activeCartService: ActiveCartService,
+        protected commonConfigUtilsService: CommonConfiguratorUtilsService,
+        protected checkoutFacade: CheckoutFacade,
+        protected userIdService: UserIdService,
+      ) {
+        super(
+          cartStore, 
+          store, 
+          activeCartService, 
+          commonConfigUtilsService,
+          checkoutFacade,
+          userIdService);
+      }
+    }
+`;
+//CART_SERVICE_EXPECTED_TEST_CLASS
+const CART_SERVICE_EXPECTED_TEST_CLASS = `
+    import { select, Store } from '@ngrx/store';
+    import { CheckoutFacade } from '@spartacus/checkout/root';
+    import {
+      ActiveCartService,
+      OCC_USER_ID_CURRENT,
+      StateUtils,
+      StateWithMultiCart,
+      UserIdService,
+    } from '@spartacus/core';    
+    import {
+      ConfiguratorCartService,
+      ConfiguratorGroupsService,
+      ConfiguratorStorefrontUtilsService
+    } from '@spartacus/product-configurator/rulebased';
+    import { 
+       CommonConfiguratorUtilsService 
+    } from '@spartacus/product-configurator/common';  
+
+    export class InheritedService extends ConfiguratorCartService {
+      constructor(
+        protected cartStore: Store<StateWithMultiCart>,
+        protected store: Store<StateWithConfigurator>,
+        protected activeCartService: ActiveCartService,
+        protected commonConfigUtilsService: CommonConfiguratorUtilsService,
+        protected checkoutFacade: CheckoutFacade,
+        protected userIdService: UserIdService,
+      ) {
+        super(
+          cartStore, 
+          store, 
+          activeCartService, 
+          commonConfigUtilsService,
+          checkoutFacade,
+          userIdService);
+      }
+    }
+`; 
+ 
 
 const MIGRATION_SCRIPT_NAME = 'migration-v2-constructor-deprecations-03';
 const NOT_INHERITING_SPARTACUS_CLASS = `
@@ -491,6 +570,17 @@ describe('constructor migrations', () => {
     shx.cd(previousWorkingDir);
     shx.rm('-r', tmpDirPath);
   });
+
+  describe('configurator cart service migration', () => {
+    it('should make the required changes', async () => {
+      writeFile(host, '/src/index.ts', CART_SERVICE_VALID_TEST_CLASS);
+
+      await runMigration(appTree, schematicRunner, MIGRATION_SCRIPT_NAME);
+
+      const content = appTree.readContent('/src/index.ts');
+      expect(content).toEqual(CART_SERVICE_EXPECTED_TEST_CLASS);
+    }); 
+  });  
 
   describe('when the class does NOT extend a Spartacus class', () => {
     it('should skip it', async () => {
