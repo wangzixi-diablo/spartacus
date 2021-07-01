@@ -6,25 +6,25 @@ import {
   findNodes,
   getSourceNodes,
   insertImport,
-  isImported,
+  isImported
 } from '@schematics/angular/utility/ast-utils';
 import {
   Change,
   InsertChange,
   NoopChange,
   RemoveChange,
-  ReplaceChange,
+  ReplaceChange
 } from '@schematics/angular/utility/change';
 import ts from 'typescript';
 import {
   ANGULAR_CORE,
   INJECT_DECORATOR,
   TODO_SPARTACUS,
-  UTF_8,
+  UTF_8
 } from '../constants';
 import {
   getAngularJsonFile,
-  getDefaultProjectNameFromWorkspace,
+  getDefaultProjectNameFromWorkspace
 } from './workspace-utils';
 
 export enum InsertDirection {
@@ -629,7 +629,7 @@ export function removeConstructorParam(
       ...injectImportRemovalChange
     );
   }
-  const paramName = getParamName(source, constructorNode, paramToRemove);
+  const paramName = getParamName(source, constructorNode, paramToRemove); 
   if (!paramName) {
     return [new NoopChange()];
   }
@@ -694,7 +694,13 @@ function getClassName(constructorParameter: ts.Node): string | undefined {
   const classExpressionNode = constructorParameter
     .getChildren()
     .find((node) => node.kind === ts.SyntaxKind.TypeReference);
-  return classExpressionNode ? classExpressionNode.getText() : undefined;
+  if (classExpressionNode){   
+    const identifierNode = classExpressionNode.getChildren().find((node)=>node.kind === ts.SyntaxKind.Identifier);
+    return identifierNode ? identifierNode.getText() : undefined;
+  }  
+  
+
+   
 }
 
 function shouldRemoveImportAndParam(
