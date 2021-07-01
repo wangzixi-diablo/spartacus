@@ -694,13 +694,12 @@ function getClassName(constructorParameter: ts.Node): string | undefined {
   const classExpressionNode = constructorParameter
     .getChildren()
     .find((node) => node.kind === ts.SyntaxKind.TypeReference);
-  if (classExpressionNode){   
-    const identifierNode = classExpressionNode.getChildren().find((node)=>node.kind === ts.SyntaxKind.Identifier);
+  if (classExpressionNode) {
+    const identifierNode = classExpressionNode
+      .getChildren()
+      .find((node) => node.kind === ts.SyntaxKind.Identifier);
     return identifierNode ? identifierNode.getText() : undefined;
-  }  
-  
-
-   
+  }
 }
 
 function shouldRemoveImportAndParam(
