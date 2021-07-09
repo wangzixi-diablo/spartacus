@@ -6,25 +6,25 @@ import {
   findNodes,
   getSourceNodes,
   insertImport,
-  isImported
+  isImported,
 } from '@schematics/angular/utility/ast-utils';
 import {
   Change,
   InsertChange,
   NoopChange,
   RemoveChange,
-  ReplaceChange
+  ReplaceChange,
 } from '@schematics/angular/utility/change';
 import ts from 'typescript';
 import {
   ANGULAR_CORE,
   INJECT_DECORATOR,
   TODO_SPARTACUS,
-  UTF_8
+  UTF_8,
 } from '../constants';
 import {
   getAngularJsonFile,
-  getDefaultProjectNameFromWorkspace
+  getDefaultProjectNameFromWorkspace,
 } from './workspace-utils';
 
 export enum InsertDirection {
@@ -444,12 +444,12 @@ function checkConstructorParameters(
 
       if (constructorParameterType.length !== 0) {
         foundClassTypes.push(parameterClassType);
-        /*  
+        /*
         the break is needed to cope with multiple parameters of one type,
-        e.g. constructor migrations for 
+        e.g. constructor migrations for
        constructor(
           protected cartStore: Store<StateWithMultiCart>,
-          protected store: Store<StateWithConfigurator>, 
+          protected store: Store<StateWithConfigurator>,
           protected configuratorUtilsService: ConfiguratorUtilsService
         ) {}    */
         break;
@@ -583,10 +583,6 @@ export function addConstructorParam(
   }
 
   const paramName = getParamName(source, constructorNode, paramToAdd);
-  const isCartServiceMigration = paramToAdd.className === 'ConfiguratorUtilsService';
-  if (isCartServiceMigration){
-    console.log("CHHI param name for super constructor: " + paramName);
-  }
   changes.push(
     updateConstructorSuperNode(
       sourcePath,
@@ -629,7 +625,7 @@ export function removeConstructorParam(
       ...injectImportRemovalChange
     );
   }
-  const paramName = getParamName(source, constructorNode, paramToRemove); 
+  const paramName = getParamName(source, constructorNode, paramToRemove);
   if (!paramName) {
     return [new NoopChange()];
   }
@@ -967,8 +963,6 @@ function updateConstructorSuperNode(
     throw new SchematicsException('No constructor body found.');
   }
 
-   
-
   const callExpression = findNodes(callBlock[0], ts.SyntaxKind.CallExpression);
 
   // super has to be the first expression in constructor
@@ -1005,8 +999,6 @@ export function injectService(
     throw new SchematicsException(`No constructor found in ${config.path}.`);
   }
 
-  const isCartServiceMigration = config.serviceName === 'ConfiguratorUtilsService';
-
   const constructorParameters = getConstructorParameterList(
     config.constructorNode
   );
@@ -1022,9 +1014,7 @@ export function injectService(
   config.propertyName = config.propertyName
     ? strings.camelize(config.propertyName)
     : strings.camelize(config.serviceName);
-    if (isCartServiceMigration){
-      console.log("CHHI property name: " + config.propertyName);
-    }
+
   config.propertyType =
     config.propertyType ?? strings.classify(config.serviceName);
 
@@ -1033,9 +1023,7 @@ export function injectService(
   toInsert += `${config.propertyName}: ${config.propertyType}`;
 
   if (config.isArray) toInsert += '[]';
-  if (isCartServiceMigration){   
-    console.log("CHHI before InsertChange, toInsert: " + JSON.stringify(toInsert));
-  }
+
   return new InsertChange(config.path, position, toInsert);
 }
 
