@@ -518,19 +518,19 @@ export class CustomPageMetaService extends PageMetaService {
 `;
 
 const CONFIGURATOR_OVERVIEW_ATTRIBUTE_VALID_TEST_CLASS = `
-    import { ConfiguratorOverviewAttributeComponent} from '@spartacus/product-configurator/rulebased';
-    export class InheritingService extends ConfiguratorOverviewAttributeComponent {
-    }
+import { ConfiguratorOverviewAttributeComponent } from '@spartacus/product-configurator/rulebased';
+export class InheritingService extends ConfiguratorOverviewAttributeComponent {
+}
 `;
 
 const CONFIGURATOR_OVERVIEW_ATTRIBUTE_EXPECTED_CLASS  = `
-    import { BreakpointService} from '@spartacus/storefront';
-    import { ConfiguratorOverviewAttributeComponent} from '@spartacus/product-configurator/rulebased';
-    export class InheritingService extends ConfiguratorOverviewAttributeComponent {
-      constructor(
-        protected breakpointService: BreakpointService
-      )
-    }
+import { BreakpointService } from '@spartacus/storefront';
+import { ConfiguratorOverviewAttributeComponent } from '@spartacus/product-configurator/rulebased';
+export class InheritingService extends ConfiguratorOverviewAttributeComponent {
+  constructor(
+      protected breakpointService: BreakpointService
+  )
+}
 `;
 
 describe('constructor migrations', () => {
