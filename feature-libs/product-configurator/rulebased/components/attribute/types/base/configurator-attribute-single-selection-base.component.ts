@@ -137,6 +137,23 @@ export abstract class ConfiguratorAttributeSingleSelectionBaseComponent extends 
     };
   }
 
+  /**
+   * Extract corresponding value price formula parameters
+   *
+   * @param {Configurator.Value} value - Configurator value
+   * @return {ConfiguratorPriceComponentOptions} - New price formula
+   */
+  extractValuePriceFormulaParameters(
+    value?: Configurator.Value
+  ): ConfiguratorPriceComponentOptions | undefined {
+    if (value) {
+      return {
+        price: value?.valuePrice,
+        isLightedUp: value?.selected,
+      };
+    }
+  }
+
   protected getSelectedValuePrice(): Configurator.PriceDetails | undefined {
     return this.attribute?.values?.find((value) => value?.selected)?.valuePrice;
   }
