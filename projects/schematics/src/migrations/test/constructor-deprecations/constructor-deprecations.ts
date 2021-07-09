@@ -15,7 +15,7 @@ import { PRODUCT_PAGE_META_RESOLVER_MIGRATION } from './data/page-resolvers/prod
 import { PAGE_SLOT_COMPONENT_MIGRATION } from './data/page-slot.component.migration';
 import { SELECTIVE_CART_SERVICE_MIGRATION } from './data/selective-cart.service.migration';
 import { USER_ADDRESS_SERVICE_MIGRATION } from './data/user-address.service.migration';
-import {CONFIGURATOR_OVERVIEW_ATTRIBUTE_COMPONENT_MIGRATION} from './data/configurator-overview-attribute.component.migration';
+import { CONFIGURATOR_OVERVIEW_ATTRIBUTE_COMPONENT_MIGRATION } from './data/configurator-overview-attribute.component.migration';
 
 export const CONSTRUCTOR_DEPRECATION_DATA: ConstructorDeprecation[] = [
   USER_ADDRESS_SERVICE_MIGRATION,
