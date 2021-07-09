@@ -28,15 +28,15 @@ const CART_SERVICE_VALID_TEST_CLASS = `
       StateUtils,
       StateWithMultiCart,
       UserIdService,
-    } from '@spartacus/core';    
+    } from '@spartacus/core';
     import {
       ConfiguratorCartService,
       ConfiguratorGroupsService,
       ConfiguratorStorefrontUtilsService
     } from '@spartacus/product-configurator/rulebased';
-    import { 
-       CommonConfiguratorUtilsService 
-    } from '@spartacus/product-configurator/common';  
+    import {
+       CommonConfiguratorUtilsService
+    } from '@spartacus/product-configurator/common';
 
     export class InheritedService extends ConfiguratorCartService {
       constructor(
@@ -48,9 +48,9 @@ const CART_SERVICE_VALID_TEST_CLASS = `
         protected userIdService: UserIdService,
       ) {
         super(
-          cartStore, 
-          store, 
-          activeCartService, 
+          cartStore,
+          store,
+          activeCartService,
           commonUtilsService,
           checkoutFacade,
           userIdService);
@@ -67,19 +67,19 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
       StateUtils,
       StateWithMultiCart,
       UserIdService,
-    } from '@spartacus/core';    
+    } from '@spartacus/core';
     import {
       ConfiguratorCartService,
       ConfiguratorGroupsService,
       ConfiguratorStorefrontUtilsService, ConfiguratorUtilsService
     } from '@spartacus/product-configurator/rulebased';
-    import { 
-       CommonConfiguratorUtilsService 
-    } from '@spartacus/product-configurator/common';  
+    import {
+       CommonConfiguratorUtilsService
+    } from '@spartacus/product-configurator/common';
 
     export class InheritedService extends ConfiguratorCartService {
       constructor(
-        
+
         protected store: Store<StateWithConfigurator>,
         protected activeCartService: ActiveCartService,
         protected commonUtilsService: CommonConfiguratorUtilsService,
@@ -87,16 +87,16 @@ const CART_SERVICE_EXPECTED_TEST_CLASS = `
         protected userIdService: UserIdService, configuratorUtilsService: ConfiguratorUtilsService,
       ) {
         super(
-           
-          store, 
-          activeCartService, 
+
+          store,
+          activeCartService,
           commonUtilsService,
           checkoutFacade,
           userIdService, configuratorUtilsService);
       }
     }
-`; 
- 
+`;
+
 
 const MIGRATION_SCRIPT_NAME = 'migration-v2-constructor-deprecations-03';
 const NOT_INHERITING_SPARTACUS_CLASS = `
@@ -259,7 +259,7 @@ const REMOVE_PARAMETER_EXPECTED_CLASS = `
 import { Dummy } from '@angular/core';
 import {
   CmsService,
-  
+
   PageMetaResolver,
   PageMetaService
 } from '@spartacus/core';
@@ -267,7 +267,7 @@ export class Test extends PageMetaService {
   constructor(
     resolvers: PageMetaResolver[],
     cms: CmsService
-    
+
   ) {
     super(resolvers, cms );
   }
@@ -297,7 +297,7 @@ const REMOVE_PARAMETER_WITH_ADDITIONAL_INJECTED_SERVICE_EXPECTED_CLASS = `
 import { ActionsSubject } from '@ngrx/store';
 import {
   CmsService,
-  
+
   PageMetaResolver,
   PageMetaService
 } from '@spartacus/core';
@@ -441,7 +441,7 @@ import {
   Renderer2, ChangeDetectorRef,
 } from '@angular/core';
 import {
-  
+
   CmsService,
   ContentSlotData,
   DynamicAttributeService,
@@ -501,7 +501,7 @@ import {
   PageMetaService,
   PageMetaResolver,
   CmsService,
-  
+
 } from '@spartacus/core';
 import {Injectable, Inject} from '@angular/core';
 @Injectable({})
@@ -510,11 +510,27 @@ export class CustomPageMetaService extends PageMetaService {
       @Inject(PageMetaResolver)
       protected resolvers: PageMetaResolver[],
       protected cms: CmsService
-      
+
   ) {
       super(resolvers, cms );
   }
 }
+`;
+
+const CONFIGURATOR_OVERVIEW_ATTRIBUTE_VALID_TEST_CLASS = `
+    import { ConfiguratorOverviewAttributeComponent} from '@spartacus/product-configurator/rulebased';
+    export class InheritingService extends ConfiguratorOverviewAttributeComponent {
+    }
+`;
+
+const CONFIGURATOR_OVERVIEW_ATTRIBUTE_EXPECTED_CLASS  = `
+    import { BreakpointService} from '@spartacus/storefront';
+    import { ConfiguratorOverviewAttributeComponent} from '@spartacus/product-configurator/rulebased';
+    export class InheritingService extends ConfiguratorOverviewAttributeComponent {
+      constructor(
+        protected breakpointService: BreakpointService
+      )
+    }
 `;
 
 describe('constructor migrations', () => {
@@ -579,8 +595,8 @@ describe('constructor migrations', () => {
 
       const content = appTree.readContent('/src/index.ts');
       expect(content).toEqual(CART_SERVICE_EXPECTED_TEST_CLASS);
-    }); 
-  });  
+    });
+  });
 
   describe('when the class does NOT extend a Spartacus class', () => {
     it('should skip it', async () => {
@@ -815,6 +831,21 @@ describe('constructor migrations', () => {
 
       const content = appTree.readContent('/src/index.ts');
       expect(content).toEqual(AT_INJECT_EXPECTED);
+    });
+  });
+
+  describe('when all the pre-conditions are valid for adding new dependency', () => {
+    it('should add a parameter', async () => {
+      writeFile(
+        host,
+        '/src/index.ts',
+        CONFIGURATOR_OVERVIEW_ATTRIBUTE_VALID_TEST_CLASS
+      );
+
+      await runMigration(appTree, schematicRunner, MIGRATION_SCRIPT_NAME);
+
+      const content = appTree.readContent('/src/index.ts');
+      expect(content).toEqual(CONFIGURATOR_OVERVIEW_ATTRIBUTE_EXPECTED_CLASS);
     });
   });
 });
