@@ -161,6 +161,11 @@
     </div>
   </div>
 
+  <div *ngIf="item.product.availableForPickup">
+    <button>get it delivered</button> |
+    <button>Pickup from [store name]</button>
+  </div>
+
   <ng-template #total>
     <div
       *ngIf="item.totalPrice"
