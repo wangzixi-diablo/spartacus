@@ -1,3 +1,4 @@
+export * from './address-book/index';
 export * from './close-account/index';
 export * from './forgot-password/index';
 export * from './register/index';

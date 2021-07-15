@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AddressBookModule } from './address-book';
 import { CloseAccountModule } from './close-account/close-account.module';
 import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 import { RegisterComponentModule } from './register/register.module';
@@ -16,6 +17,7 @@ import { UpdateProfileModule } from './update-profile/update-profile.module';
     ForgotPasswordModule,
     ResetPasswordModule,
     CloseAccountModule,
+    AddressBookModule,
   ],
 })
 export class UserProfileComponentsModule {}

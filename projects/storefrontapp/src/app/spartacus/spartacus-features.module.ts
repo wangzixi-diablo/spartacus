@@ -13,12 +13,10 @@ import {
   UserTransitionalModule,
 } from '@spartacus/core';
 import {
-  AddressBookModule,
   AnonymousConsentManagementBannerModule,
   AnonymousConsentsDialogModule,
   BannerCarouselModule,
   BannerModule,
-  PageTitleModule,
   BreadcrumbModule,
   CartComponentModule,
   CartPageEventModule,
@@ -41,6 +39,7 @@ import {
   OrderDetailsModule,
   OrderHistoryModule,
   OrderReturnModule,
+  PageTitleModule,
   PaymentMethodsModule,
   ProductCarouselModule,
   ProductDetailsPageModule,
@@ -125,7 +124,6 @@ if (environment.cpq) {
     UserTransitionalModule,
     UserOccTransitionalModule,
     // User UI
-    AddressBookModule,
     PaymentMethodsModule,
     NotificationPreferenceModule,
     MyInterestsModule,
