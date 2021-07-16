@@ -8,6 +8,9 @@ import { Address } from '@spartacus/core';
 import { ModalService } from '../../../../../shared/components/modal/index';
 import { ICON_TYPE } from '../../../../misc/icon/index';
 
+/**
+ * @deprecated since 4.1, use the same component @spartacus/user package instead.
+ */
 @Component({
   selector: 'cx-suggested-addresses-dialog',
   templateUrl: './suggested-addresses-dialog.component.html',

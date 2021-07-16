@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Address, UserAddressService } from '@spartacus/core';
 import { Observable } from 'rxjs';
 
+/**
+ * @deprecated since 4.1, use the same service from @spartacus/user package instead.
+ */
 @Injectable({
   providedIn: 'root',
 })

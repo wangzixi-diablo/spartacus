@@ -29,6 +29,9 @@ import {
 import { sortTitles } from '../../../../shared/utils/forms/title-utils';
 import { SuggestedAddressDialogComponent } from './suggested-addresses-dialog/suggested-addresses-dialog.component';
 
+/**
+ * @deprecated since 4.1, use the same component @spartacus/user package instead.
+ */
 @Component({
   selector: 'cx-address-form',
   templateUrl: './address-form.component.html',

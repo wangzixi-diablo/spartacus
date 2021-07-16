@@ -5,6 +5,9 @@ import { map } from 'rxjs/operators';
 import { Card } from '../../../shared/components/card';
 import { AddressBookComponentService } from './address-book.component.service';
 
+/**
+ * @deprecated since 4.1, use the same component @spartacus/user package instead.
+ */
 @Component({
   selector: 'cx-address-book',
   templateUrl: './address-book.component.html',

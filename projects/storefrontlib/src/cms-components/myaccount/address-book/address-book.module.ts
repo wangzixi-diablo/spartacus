@@ -12,6 +12,9 @@ import { SpinnerModule } from '../../../shared/components/spinner/spinner.module
 import { AddressBookComponent } from './address-book.component';
 import { AddressFormModule } from './address-form/address-form.module';
 
+/**
+ * @deprecated since 4.1, moved to @spartacus/user package.
+ */
 @NgModule({
   imports: [
     CommonModule,
