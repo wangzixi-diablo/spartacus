@@ -7,4 +7,9 @@ export interface ImageComponentModel extends CmsComponent {
 
   headline: string;
   subHeadline: string;
+  link?: {
+    value?: string;
+    type?: string;
+    contentIds?: string[];
+  };
 }

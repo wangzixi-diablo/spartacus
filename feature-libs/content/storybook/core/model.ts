@@ -14,6 +14,7 @@ export interface StorybookComponentModel extends CmsComponent {
     name: string;
     show: boolean;
   }[];
+  contentIds?: string[];
 }
 
 export declare enum StoryBookLayoutType {
