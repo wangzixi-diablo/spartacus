@@ -1,12 +1,12 @@
-import { DIALOG_TYPE, LayoutConfig } from '@spartacus/storefront';
-import { AnonymousConsentDialogComponent } from './anonymous-consent-dialog.component';
+import { LayoutConfig, OutletPosition } from '@spartacus/storefront';
+import { AnonymousConsentManagementBannerComponent } from '../banner/anonymous-consent-management-banner.component';
 
 export const defaultAnonymousConsentLayoutConfig: LayoutConfig = {
   launch: {
     ANONYMOUS_CONSENT: {
-      inline: true,
-      component: AnonymousConsentDialogComponent,
-      dialogType: DIALOG_TYPE.DIALOG,
+      outlet: 'cx-footer',
+      component: AnonymousConsentManagementBannerComponent,
+      position: OutletPosition.AFTER,
     },
   },
 };

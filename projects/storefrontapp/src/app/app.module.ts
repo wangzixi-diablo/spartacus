@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { translationChunksConfig, translations } from '@spartacus/assets';
 import {
+  FeatureModulesService,
   FeaturesConfig,
   I18nConfig,
   OccConfig,
@@ -20,7 +21,12 @@ import {
   RoutingConfig,
   TestConfigModule,
 } from '@spartacus/core';
-import { StorefrontComponent } from '@spartacus/storefront';
+import {
+  LaunchDialogService,
+  LAUNCH_CALLER,
+  StorefrontComponent,
+} from '@spartacus/storefront';
+import { USER_ANONYMOUS_CONSENTS_FEATURE } from '@spartacus/user/anonymous-consents/root';
 import { environment } from '../environments/environment';
 import { TestOutletModule } from '../test-outlets/test-outlet.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -85,4 +91,22 @@ if (!environment.production) {
   ],
   bootstrap: [StorefrontComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    protected featureModules: FeatureModulesService,
+    protected launchDialogService: LaunchDialogService
+  ) {
+    if (window.localStorage.getItem('xxx')) {
+      this.featureModules
+        .resolveFeature(USER_ANONYMOUS_CONSENTS_FEATURE)
+        .subscribe(() => {
+          const dialog = this.launchDialogService.launch(
+            LAUNCH_CALLER.ANONYMOUS_CONSENT
+          );
+          if (dialog) {
+            dialog.subscribe();
+          }
+        });
+    }
+  }
+}

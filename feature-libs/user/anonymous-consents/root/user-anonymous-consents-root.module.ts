@@ -10,8 +10,8 @@ export function defaultUserAnonymousConsentsComponentsConfig(): CmsConfig {
       [USER_ANONYMOUS_CONSENTS_FEATURE]: {
         cmsComponents: [
           // TODO:#anon - check these
-          'AnonymousConsentManagementBannerComponent',
-          'AnonymousConsentOpenDialogComponent',
+          // 'AnonymousConsentManagementBannerComponent',
+          // 'AnonymousConsentOpenDialogComponent',
           // 'AnonymousConsentDialogComponent'
         ],
       },
