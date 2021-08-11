@@ -14,7 +14,6 @@ import { CartCouponModule } from '../cart-coupon/cart-coupon.module';
 import { CartItemListComponent } from './cart-item-list/cart-item-list.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
-import { DeliveryPickupOptionsComponent } from './delivery-pickup-options/delivery-pickup-options.component';
 
 @NgModule({
   imports: [
@@ -37,7 +36,6 @@ import { DeliveryPickupOptionsComponent } from './delivery-pickup-options/delive
     CartItemComponent,
     OrderSummaryComponent,
     CartItemListComponent,
-    DeliveryPickupOptionsComponent,
   ],
   exports: [CartItemComponent, CartItemListComponent, OrderSummaryComponent],
 })

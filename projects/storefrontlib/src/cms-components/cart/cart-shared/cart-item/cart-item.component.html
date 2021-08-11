@@ -162,7 +162,10 @@
     </div>
   </div>
 
-  <cx-delivery-pickup-options></cx-delivery-pickup-options>
+  <div *ngIf="item.product.availableForPickup">
+    <button>get it delivered</button> |
+    <button>Pickup from [store name]</button>
+  </div>
 
   <ng-template #total>
     <div
