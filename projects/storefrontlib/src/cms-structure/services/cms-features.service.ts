@@ -55,6 +55,8 @@ export class CmsFeaturesService {
       .subscribe((config: CmsConfig) => {
         this.featureModulesConfig = config.featureModules ?? {};
 
+        console.log('conf', this.featureModulesConfig);
+
         for (const [featureName, featureConfig] of Object.entries(
           this.featureModulesConfig
         )) {
@@ -68,6 +70,8 @@ export class CmsFeaturesService {
             }
           }
         }
+
+        console.log([this.componentFeatureMap, this.featureModulesConfig]);
       });
   }
 
