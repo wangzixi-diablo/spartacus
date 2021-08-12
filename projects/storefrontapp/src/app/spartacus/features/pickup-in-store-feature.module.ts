@@ -3,7 +3,7 @@ import { provideConfig } from '@spartacus/core';
 import {
   CART_PICKUP_IN_STORE_FEATURE,
   PickupInStoreRootModule,
-} from '@spartacus/cart/pickup-in-store/root/';
+} from '@spartacus/cart/pickup-in-store/root';
 
 @NgModule({
   imports: [PickupInStoreRootModule],
@@ -25,4 +25,4 @@ import {
     }),
   ],
 })
-export class PickupInStoreModule {}
+export class PickupInStoreFeatureModule {}

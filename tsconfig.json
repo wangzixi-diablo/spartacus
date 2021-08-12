@@ -52,6 +52,18 @@
       "@spartacus/cart/saved-cart/root": [
         "feature-libs/cart/saved-cart/root/public_api"
       ],
+      "@spartacus/cart/pickup-in-store/assets": [
+        "feature-libs/cart/pickup-in-store/assets/public_api"
+      ],
+      "@spartacus/cart/pickup-in-store/components": [
+        "feature-libs/cart/pickup-in-store/components/public_api"
+      ],
+      "@spartacus/cart/pickup-in-store/core": [
+        "feature-libs/cart/pickup-in-store/core/public_api"
+      ],
+      "@spartacus/cart/pickup-in-store": [
+        "feature-libs/cart/pickup-in-store/public_api"
+      ],
       "@spartacus/cart/pickup-in-store/root": [
         "feature-libs/cart/pickup-in-store/root/public_api"
       ],
@@ -110,7 +122,7 @@
       ],
       "@spartacus/product-configurator/rulebased/cpq": [
         "feature-libs/product-configurator/rulebased/cpq/public_api"
-      ],      
+      ],
       "@spartacus/product-configurator/textfield": [
         "feature-libs/product-configurator/textfield/public_api"
       ],
