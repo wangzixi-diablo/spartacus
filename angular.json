@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "feature-libs",
+  "newProjectRoot": "projects",
   "projects": {
     "storefrontapp": {
       "root": "projects/storefrontapp/",
@@ -891,6 +891,109 @@
               "feature-libs/user/**/*.ts",
               "feature-libs/user/**/*.html"
             ]
+          }
+        }
+      }
+    },
+    "storefrontapp-poc-cms-wrapper": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/storefrontapp-poc-cms-wrapper",
+      "sourceRoot": "projects/storefrontapp-poc-cms-wrapper/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/storefrontapp-poc-cms-wrapper",
+            "index": "projects/storefrontapp-poc-cms-wrapper/src/index.html",
+            "main": "projects/storefrontapp-poc-cms-wrapper/src/main.ts",
+            "polyfills": "projects/storefrontapp-poc-cms-wrapper/src/polyfills.ts",
+            "tsConfig": "projects/storefrontapp-poc-cms-wrapper/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/storefrontapp-poc-cms-wrapper/src/favicon.ico",
+              "projects/storefrontapp-poc-cms-wrapper/src/assets"
+            ],
+            "styles": [
+              "projects/storefrontapp-poc-cms-wrapper/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/storefrontapp-poc-cms-wrapper/src/environments/environment.ts",
+                  "with": "projects/storefrontapp-poc-cms-wrapper/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "storefrontapp-poc-cms-wrapper:build:production"
+            },
+            "development": {
+              "browserTarget": "storefrontapp-poc-cms-wrapper:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "storefrontapp-poc-cms-wrapper:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/storefrontapp-poc-cms-wrapper/src/test.ts",
+            "polyfills": "projects/storefrontapp-poc-cms-wrapper/src/polyfills.ts",
+            "tsConfig": "projects/storefrontapp-poc-cms-wrapper/tsconfig.spec.json",
+            "karmaConfig": "projects/storefrontapp-poc-cms-wrapper/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/storefrontapp-poc-cms-wrapper/src/favicon.ico",
+              "projects/storefrontapp-poc-cms-wrapper/src/assets"
+            ],
+            "styles": [
+              "projects/storefrontapp-poc-cms-wrapper/src/styles.scss"
+            ],
+            "scripts": []
           }
         }
       }
