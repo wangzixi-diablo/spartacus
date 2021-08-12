@@ -1,5 +1,5 @@
-import { importExport } from './import-export.i18n';
+import { pickupInStore } from './pickup-in-store.i18n';
 
 export const en = {
-  importExport,
+  pickupInStore,
 };

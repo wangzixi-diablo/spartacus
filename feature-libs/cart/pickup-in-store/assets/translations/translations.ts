@@ -1,10 +1,10 @@
 import { TranslationChunksConfig, TranslationResources } from '@spartacus/core';
 import { en } from './en/index';
 
-export const importExportTranslations: TranslationResources = {
+export const pickupInStoreTranslations: TranslationResources = {
   en,
 };
 
-export const importExportTranslationChunksConfig: TranslationChunksConfig = {
-  importExport: ['exportEntries', 'importEntries', 'importEntriesDialog'],
+export const pickupInStoreTranslationChunksConfig: TranslationChunksConfig = {
+  importExport: ['pickupInStoreComponent'],
 };

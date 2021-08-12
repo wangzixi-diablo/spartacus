@@ -4,6 +4,10 @@ import {
   CART_PICKUP_IN_STORE_FEATURE,
   PickupInStoreRootModule,
 } from '@spartacus/cart/pickup-in-store/root';
+import {
+  pickupInStoreTranslationChunksConfig,
+  pickupInStoreTranslations,
+} from '@spartacus/cart/pickup-in-store/assets';
 
 @NgModule({
   imports: [PickupInStoreRootModule],
@@ -17,11 +21,11 @@ import {
             ),
         },
       },
-      // i18n: {
-      //   resources: importExportTranslations,
-      //   chunks: importExportTranslationChunksConfig,
-      //   fallbackLang: 'en',
-      // },
+      i18n: {
+        resources: pickupInStoreTranslations,
+        chunks: pickupInStoreTranslationChunksConfig,
+        fallbackLang: 'en',
+      },
     }),
   ],
 })
