@@ -52,6 +52,9 @@
       "@spartacus/cart/saved-cart/root": [
         "feature-libs/cart/saved-cart/root/public_api"
       ],
+      "@spartacus/cart/pickup-in-store/root": [
+        "feature-libs/cart/pickup-in-store/root/public_api"
+      ],
       "@spartacus/checkout/assets": ["feature-libs/checkout/assets/public_api"],
       "@spartacus/checkout/components": [
         "feature-libs/checkout/components/public_api"

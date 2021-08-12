@@ -22,6 +22,7 @@
       "@spartacus/cart/saved-cart": ["../../dist/cart/saved-cart"],
       "@spartacus/cart/saved-cart/occ": ["../../dist/cart/saved-cart/occ"],
       "@spartacus/cart/saved-cart/root": ["../../dist/cart/saved-cart/root"],
+      "@spartacus/cart/pickup-in-store/root": ["../../dist/cart/pickup-in-store/root"],
       "@spartacus/checkout/assets": ["../../dist/checkout/assets"],
       "@spartacus/checkout/components": ["../../dist/checkout/components"],
       "@spartacus/checkout/core": ["../../dist/checkout/core"],

@@ -44,6 +44,9 @@
       "@spartacus/checkout/core": [
         "../../feature-libs/checkout/core/public_api"
       ],
+      "@spartacus/cart/pickup-in-store/root": [
+        "feature-libs/cart/pickup-in-store/root/public_api"
+      ],
       "@spartacus/checkout": ["../../feature-libs/checkout/public_api"],
       "@spartacus/checkout/occ": ["../../feature-libs/checkout/occ/public_api"],
       "@spartacus/checkout/root": [
