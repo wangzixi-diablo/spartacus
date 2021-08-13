@@ -1,4 +1,9 @@
-<div style="background: lightblue; padding: 10px; margin-bottom: 20px">
-  <cx-icon [type]="iconTypes.INFO"> </cx-icon>
-  pdp notice component
-</div>
+<ng-container *ngIf="product$ | async as product">
+  <div
+    *ngIf="product.availableForPickup"
+    style="background: lightblue; padding: 10px; margin: 20px"
+  >
+    <cx-icon [type]="iconTypes.INFO"> </cx-icon>
+    Pick up in Store option is available in the Shopping Cart
+  </div>
+</ng-container>

@@ -21,7 +21,6 @@ import { ModalRef } from '../../../shared/components/modal/modal-ref';
 import { ModalService } from '../../../shared/components/modal/modal.service';
 import { CurrentProductService } from '../../product/current-product.service';
 import { AddedToCartDialogComponent } from './added-to-cart-dialog/added-to-cart-dialog.component';
-import { ICON_TYPE } from '@spartacus/storefront';
 
 @Component({
   selector: 'cx-add-to-cart',
@@ -38,8 +37,6 @@ export class AddToCartComponent implements OnInit, OnDestroy {
    *  a reference to the product model to fetch the stock data.
    */
   @Input() product: Product;
-
-  iconTypes = ICON_TYPE;
 
   maxQuantity: number;
   modalRef: ModalRef;
@@ -108,7 +105,6 @@ export class AddToCartComponent implements OnInit, OnDestroy {
           this.productCode = product.code ?? '';
           this.setStockInfo(product);
           this.cd.markForCheck();
-          this.availableForPickup = product.availableForPickup;
         });
     }
   }
