@@ -1,6 +1,6 @@
 {
   "name": "@spartacus/schematics",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Spartacus schematics",
   "keywords": [
     "spartacus",
@@ -54,7 +54,8 @@
       "@spartacus/cdc",
       "@spartacus/tracking",
       "@spartacus/cart",
-      "@spartacus/setup"
+      "@spartacus/setup",
+      "@spartacus/cms"
     ]
   },
   "schematics": "./src/collection.json"

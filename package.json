@@ -15,7 +15,7 @@
     "build:cdc": "yarn --cwd integration-libs/cdc run build:schematics && ng build cdc --configuration production",
     "build:cds": "yarn --cwd integration-libs/cds run build:schematics && ng build cds --configuration production",
     "build:checkout": "yarn --cwd feature-libs/checkout run build:schematics && ng build checkout --configuration production",
-    "build:libs": "ng build core --configuration production && ng build storefrontlib --configuration production && yarn build:schematics && yarn build:user && yarn build:cart && yarn build:checkout && yarn build:asm && yarn build:tracking  && concurrently --kill-others-on-fail -m 4 yarn:build:organization yarn:build:product yarn:build:product-configurator yarn:build:storefinder yarn:build:smartedit yarn:build:qualtrics yarn:build:assets yarn:build:incubator yarn:build:cdc yarn:build:cds yarn:build:setup",
+    "build:libs": "ng build core --configuration production && ng build storefrontlib --configuration production && yarn build:schematics && yarn build:user && yarn build:cart && yarn build:checkout && yarn build:asm && yarn build:tracking  && concurrently --kill-others-on-fail -m 4 yarn:build:organization yarn:build:product yarn:build:product-configurator yarn:build:storefinder yarn:build:smartedit yarn:build:qualtrics yarn:build:assets yarn:build:incubator yarn:build:cdc yarn:build:cds yarn:build:setup yarn:build:cms",
     "build:incubator": "ng build incubator --configuration production",
     "build:organization": "yarn --cwd feature-libs/organization run build:schematics && ng build organization --configuration production",
     "build:product": "yarn --cwd feature-libs/product run build:schematics && ng build product --configuration production",
@@ -28,6 +28,7 @@
     "build:storefinder": "yarn --cwd feature-libs/storefinder run build:schematics && ng build storefinder --configuration production",
     "build:smartedit": "yarn --cwd feature-libs/smartedit run build:schematics && ng build smartedit --configuration production",
     "build:tracking": "yarn --cwd feature-libs/tracking run build:schematics && ng build tracking --configuration production",
+    "build:cms": "ng build layout --configuration production",
     "config:update": "ts-node ./tools/config/index.ts --fix",
     "config:check": "ts-node ./tools/config/index.ts",
     "generate:deps": "ts-node ./tools/schematics/dependency-collector.ts",
@@ -52,7 +53,7 @@
     "start:prod": "env-cmd --no-override -e dev,b2c,$SPA_ENV ng serve --configuration production",
     "start:pwa": "cd ./dist/storefrontapp/ && http-server --silent --proxy http://localhost:4200? -p 4200",
     "test": "ng test",
-    "test:libs": "concurrently \"ng test core --code-coverage\" \"ng test storefrontlib --code-coverage\" \"ng test organization --code-coverage\" \"ng test storefinder --code-coverage\" \"ng test smartedit --code-coverage\" \"ng test asm --code-coverage\" \"ng test qualtrics --code-coverage\" \"ng test product --code-coverage\" \"ng test product-configurator --code-coverage\" \"ng test cdc --code-coverage\" \"ng test setup --code-coverage\" \"ng test checkout --code-coverage\"",
+    "test:libs": "concurrently \"ng test core --code-coverage\" \"ng test storefrontlib --code-coverage\" \"ng test organization --code-coverage\" \"ng test storefinder --code-coverage\" \"ng test smartedit --code-coverage\" \"ng test asm --code-coverage\" \"ng test qualtrics --code-coverage\" \"ng test product --code-coverage\" \"ng test product-configurator --code-coverage\" \"ng test cdc --code-coverage\" \"ng test setup --code-coverage\" \"ng test checkout --code-coverage\" \"ng test layout --code-coverage\"",
     "test:storefront:lib": "ng test storefrontlib --sourceMap --code-coverage",
     "dev:ssr": "env-cmd --no-override -e dev,b2c,$SPA_ENV cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 ng run storefrontapp:serve-ssr",
     "serve:ssr": "node dist/storefrontapp-server/main.js",
@@ -80,12 +81,15 @@
     "release:product-configurator:with-changelog": "cd feature-libs/product-configurator && release-it && cd ../..",
     "release:qualtrics:with-changelog": "cd feature-libs/qualtrics && release-it && cd ../..",
     "release:tracking:with-changelog": "cd feature-libs/tracking && release-it && cd ../..",
+    "release:cms:with-changelog": "cd projects/layout && release-it && cd ../..",
     "prerender:cds": "cross-env SPARTACUS_CDS=true ng run storefrontapp:prerender",
     "publish:docs": "gh-pages -d documentation -m \"Compodocs updates\"",
     "test:cds:lib": "ng test cds --code-coverage",
     "build:cds:ssr": "cross-env SPARTACUS_CDS=true ng run storefrontapp:server:production",
     "dev:cds:ssr": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 SPARTACUS_CDS=true ng run storefrontapp:serve-ssr",
-    "prerender:cds:dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 SPARTACUS_CDS=true ng run storefrontapp:prerender --routesFile projects/storefrontapp/prerender.txt"
+    "prerender:cds:dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 SPARTACUS_CDS=true ng run storefrontapp:prerender --routesFile projects/storefrontapp/prerender.txt",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/angular-bundle-analyzer-example/stats.json"
   },
   "private": false,
   "dependencies": {
@@ -119,7 +123,8 @@
     "rxjs": "^6.6.0",
     "ts-loader": "^6.0.4",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^12.1.0",

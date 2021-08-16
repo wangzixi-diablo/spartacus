@@ -16,6 +16,15 @@
   "@spartacus/incubator": {
     "@angular/core": "^12.0.5"
   },
+  "@spartacus/cms": {
+    "@angular/common": "^12.0.5",
+    "@angular/core": "^12.0.5",
+    "@spartacus/core": "4.0.0",
+    "@spartacus/schematics": "4.0.0",
+    "@spartacus/storefront": "4.0.0",
+    "@spartacus/styles": "4.0.0",
+    "rxjs": "^6.6.0"
+  },
   "@spartacus/schematics": {
     "@angular-devkit/core": "^12.0.5",
     "@angular-devkit/schematics": "^12.0.5",
@@ -251,6 +260,7 @@
     "rxjs": "^6.6.0",
     "ts-loader": "^6.0.4",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

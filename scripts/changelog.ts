@@ -74,6 +74,7 @@ export default async function run(
     '@spartacus/assets': 'projects/assets',
     '@spartacus/schematics': 'projects/schematics',
     '@spartacus/incubator': 'projects/incubator',
+    '@spartacus/cms': 'projects/layout',
     '@spartacus/user': 'feature-libs/user',
     '@spartacus/cds': 'integration-libs/cds',
     '@spartacus/organization': 'feature-libs/organization',

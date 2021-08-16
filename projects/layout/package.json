@@ -1,0 +1,28 @@
+{
+  "name": "@spartacus/cms",
+  "version": "4.0.0",
+  "homepage": "https://github.com/SAP/spartacus",
+  "keywords": [
+    "spartacus",
+    "framework",
+    "storefront",
+    "cms"
+  ],
+  "license": "Apache-2.0",
+  "repository": "https://github.com/SAP/spartacus",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@angular/common": "^12.0.5",
+    "@angular/core": "^12.0.5",
+    "@spartacus/core": "4.0.0",
+    "@spartacus/schematics": "4.0.0",
+    "@spartacus/storefront": "4.0.0",
+    "@spartacus/styles": "4.0.0",
+    "rxjs": "^6.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
