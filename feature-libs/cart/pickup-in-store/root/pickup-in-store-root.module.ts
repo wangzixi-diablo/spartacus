@@ -7,7 +7,10 @@ import { CART_PICKUP_IN_STORE_FEATURE } from './feature-name';
     provideDefaultConfig({
       featureModules: {
         [CART_PICKUP_IN_STORE_FEATURE]: {
-          cmsComponents: ['ProductPdpNoticeComponent'],
+          cmsComponents: [
+            'ProductPdpNoticeComponent',
+            'CartDeliveryPickupOptionsComponent',
+          ],
         },
       },
     }),
