@@ -6,7 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Product } from '@spartacus/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CurrentProductService } from '@spartacus/storefront';
 import { ICON_TYPE } from '@spartacus/storefront';
 @Component({
@@ -16,13 +16,24 @@ import { ICON_TYPE } from '@spartacus/storefront';
 })
 export class PdpNoticeComponent implements OnInit, OnDestroy {
   @Input() availableForPickup = false;
+  subscription: Subscription;
   product$: Observable<Product> = this.currentProductService.getProduct();
 
   iconTypes = ICON_TYPE;
 
   constructor(protected currentProductService: CurrentProductService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.product$) {
+      this.subscription = this.product$.subscribe((product) => {
+        this.availableForPickup = product.availableForPickup;
+      });
+    }
+  }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 }
