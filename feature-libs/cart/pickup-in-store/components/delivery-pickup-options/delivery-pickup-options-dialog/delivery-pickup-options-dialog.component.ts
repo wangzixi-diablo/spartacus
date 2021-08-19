@@ -6,7 +6,7 @@ import { ICON_TYPE, LaunchDialogService } from '@spartacus/storefront';
   templateUrl: './delivery-pickup-options-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImportEntriesDialogComponent {
+export class DeliveryPickupOptionsDialogComponent {
   iconTypes = ICON_TYPE;
 
   formState: Boolean = true;

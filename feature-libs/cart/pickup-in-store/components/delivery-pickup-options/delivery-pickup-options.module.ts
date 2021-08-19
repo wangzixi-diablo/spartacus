@@ -1,28 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CmsConfig, ConfigModule, I18nModule } from '@spartacus/core';
+import { I18nModule, provideConfig } from '@spartacus/core';
 import {
   CartOutlets,
   OutletPosition,
   provideOutlet,
+  IconModule,
 } from '@spartacus/storefront';
 import { DeliveryPickupOptionsComponent } from './delivery-pickup-options.component';
+import { DeliveryPickupOptionsDialogComponent } from './delivery-pickup-options-dialog/delivery-pickup-options-dialog.component';
+import { defaultImportEntriesLayoutConfig } from './delivery-pickup-options.config';
 @NgModule({
-  imports: [
-    CommonModule,
-    I18nModule,
-    RouterModule,
-    ConfigModule.withConfig(<CmsConfig>{
-      cmsComponents: {
-        CartDeliveryPickupOptionsComponent: {
-          component: DeliveryPickupOptionsComponent,
-        },
-      },
-    }),
+  imports: [CommonModule, IconModule, I18nModule, RouterModule],
+  exports: [
+    DeliveryPickupOptionsComponent,
+    DeliveryPickupOptionsDialogComponent,
   ],
-  exports: [DeliveryPickupOptionsComponent],
-  declarations: [DeliveryPickupOptionsComponent],
+  declarations: [
+    DeliveryPickupOptionsComponent,
+    DeliveryPickupOptionsDialogComponent,
+  ],
   entryComponents: [DeliveryPickupOptionsComponent],
 
   providers: [
@@ -31,6 +29,7 @@ import { DeliveryPickupOptionsComponent } from './delivery-pickup-options.compon
       position: OutletPosition.AFTER,
       component: DeliveryPickupOptionsComponent,
     }),
+    provideConfig(defaultImportEntriesLayoutConfig),
   ],
 })
 export class DeliveryPickupOptionsModule {}
