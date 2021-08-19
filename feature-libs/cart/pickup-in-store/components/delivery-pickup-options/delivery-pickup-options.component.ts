@@ -9,7 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-// import { take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import {
   CurrentProductService,
   LaunchDialogService,
@@ -23,7 +23,7 @@ import { ICON_TYPE } from '@spartacus/storefront';
 })
 export class DeliveryPickupOptionsComponent implements OnInit, OnDestroy {
   @Input() availableForPickup = false;
-  subscription: Subscription;
+  private subscription = new Subscription();
   data = '';
   @ViewChild('open') element: ElementRef;
 
@@ -38,16 +38,16 @@ export class DeliveryPickupOptionsComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   openDialog(): void {
-    this.launchDialogService.openDialog(
+    const dialog = this.launchDialogService.openDialog(
       LAUNCH_CALLER.PICKUP_IN_STORE,
       this.element,
       this.vcr,
       this.data
     );
 
-    // if (dialog) {
-    //   this.subscription.add(dialog.pipe(take(1)).subscribe());
-    // }
+    if (dialog) {
+      this.subscription.add(dialog.pipe(take(1)).subscribe());
+    }
   }
 
   ngOnDestroy() {

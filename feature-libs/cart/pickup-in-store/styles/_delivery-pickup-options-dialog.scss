@@ -1,28 +1,28 @@
-cx-import-entries-dialog {
+cx-delivery-pickup-options-dialog {
   background-color: rgba(0, 0, 0, 0.5);
 
-  .cx-import-entries-dialog {
+  .cx-delivery-pickup-options-dialog {
     @extend .modal-dialog;
     @extend .modal-dialog-centered;
 
-    .cx-import-entries-container {
+    .cx-delivery-pickup-options-dialog-container {
       @extend .modal-content;
 
-      .cx-import-entries-header {
-        .cx-import-entries-title {
+      .cx-delivery-pickup-options-dialog-header {
+        .cx-delivery-pickup-options-dialog-title {
           font-size: var(--cx-font-size, 1.375rem);
           font-weight: var(--cx-font-weight-semi);
           line-height: var(--cx-line-height, 1.2222222222);
         }
       }
 
-      cx-import-entries-form {
+      cx-delivery-pickup-options-dialog-form {
         @extend .modal-body;
-        .cx-import-entries-subtitle {
+        .cx-delivery-pickup-options-dialog-subtitle {
           font-weight: bold;
           margin-bottom: 0.5rem;
         }
-        .cx-import-entries-row {
+        .cx-delivery-pickup-options-dialog-row {
           margin-bottom: 1.5rem;
 
           .cx-saved-cart-values-container {
@@ -42,15 +42,15 @@ cx-import-entries-dialog {
             }
           }
 
-          .cx-import-entries-label {
+          .cx-delivery-pickup-options-dialog-label {
             font-weight: bold;
           }
 
-          .cx-import-entries-label-optional {
+          .cx-delivery-pickup-options-dialog-label-optional {
             font-weight: normal;
           }
 
-          .cx-import-entries-input-hint {
+          .cx-delivery-pickup-options-dialog-input-hint {
             font-size: 0.75rem;
             font-style: italic;
             text-align: end;
@@ -58,7 +58,7 @@ cx-import-entries-dialog {
         }
       }
 
-      .cx-import-entries-footer {
+      .cx-delivery-pickup-options-dialog-footer {
         display: flex;
 
         button {
@@ -78,7 +78,7 @@ cx-import-entries-dialog {
         }
       }
 
-      cx-import-entries-summary {
+      cx-delivery-pickup-options-dialog-summary {
         @extend .modal-body;
 
         cx-icon {
@@ -95,7 +95,7 @@ cx-import-entries-dialog {
           }
         }
 
-        .cx-import-entries-summary-footer {
+        .cx-delivery-pickup-options-dialog-summary-footer {
           display: flex;
           justify-content: center;
           button {

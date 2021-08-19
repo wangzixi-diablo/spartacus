@@ -9,8 +9,6 @@ import { ICON_TYPE, LaunchDialogService } from '@spartacus/storefront';
 export class DeliveryPickupOptionsDialogComponent {
   iconTypes = ICON_TYPE;
 
-  formState: Boolean = true;
-
   constructor(protected launchDialogService: LaunchDialogService) {}
 
   close(reason: string): void {
