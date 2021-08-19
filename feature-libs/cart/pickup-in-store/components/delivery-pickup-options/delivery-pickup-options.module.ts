@@ -1,22 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { IconModule } from '@spartacus/storefront';
+import { CmsConfig, ConfigModule, I18nModule } from '@spartacus/core';
 import {
-  CmsConfig,
-  ConfigModule,
-  I18nModule,
-  UrlModule,
-} from '@spartacus/core';
+  CartOutlets,
+  OutletPosition,
+  provideOutlet,
+} from '@spartacus/storefront';
 import { DeliveryPickupOptionsComponent } from './delivery-pickup-options.component';
-
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
     I18nModule,
-    UrlModule,
-    IconModule,
+    RouterModule,
     ConfigModule.withConfig(<CmsConfig>{
       cmsComponents: {
         CartDeliveryPickupOptionsComponent: {
@@ -28,5 +24,13 @@ import { DeliveryPickupOptionsComponent } from './delivery-pickup-options.compon
   exports: [DeliveryPickupOptionsComponent],
   declarations: [DeliveryPickupOptionsComponent],
   entryComponents: [DeliveryPickupOptionsComponent],
+
+  providers: [
+    provideOutlet({
+      id: CartOutlets.ITEM_BUNDLE_DETAILS,
+      position: OutletPosition.AFTER,
+      component: DeliveryPickupOptionsComponent,
+    }),
+  ],
 })
 export class DeliveryPickupOptionsModule {}

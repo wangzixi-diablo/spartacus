@@ -1,8 +1,8 @@
-import { ImportExportConfig } from './import-export-config';
+import { PickupInStoreConfig } from './pickup-in-store-config';
 
 // TODO: Avoid using duplicated config #11931
-export const defaultImportExportConfig: ImportExportConfig = {
-  importExport: {
+export const defaultPickupInStoreConfig: PickupInStoreConfig = {
+  pickupInStore: {
     file: {
       separator: ',',
     },

@@ -1,2 +1,2 @@
-export * from './import-export-config';
-export * from './default-import-export-config';
+export * from './pickup-in-store-config';
+export * from './default-pickup-in-store-config';

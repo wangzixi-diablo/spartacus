@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { ImportExportConfig } from '../config/import-export-config';
+import { PickupInStoreConfig } from '../config/pickup-in-store-config';
 import { ExportService } from './export.service';
 
-const mockImportExportConfig: ImportExportConfig = {
+const mockImportExportConfig: PickupInStoreConfig = {
   importExport: {
     file: { separator: ',' },
   },
