@@ -6,5 +6,5 @@ export const pickupInStoreTranslations: TranslationResources = {
 };
 
 export const pickupInStoreTranslationChunksConfig: TranslationChunksConfig = {
-  importExport: ['pickupInStoreComponent'],
+  pickupInStore: ['pickupInStoreComponent'],
 };
