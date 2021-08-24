@@ -158,6 +158,7 @@
       "@spartacus/core": ["../../dist/core"],
       "@spartacus/incubator": ["../../dist/incubator"],
       "@spartacus/storefront": ["../../dist/storefrontlib"],
+      "@spartacus/storefront/cms": ["../../dist/storefrontlib/testminimalcms"],
       "@spartacus/cms/": ["../../dist/layout"]
     }
   }

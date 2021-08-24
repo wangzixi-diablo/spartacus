@@ -21,6 +21,7 @@ import {
   TestConfigModule,
 } from '@spartacus/core';
 import { StorefrontComponent } from '@spartacus/storefront';
+import {} from '@spartacus/storefront/cms';
 import { environment } from '../environments/environment';
 import { TestOutletModule } from '../test-outlets/test-outlet.module';
 import { AppRoutingModule } from './app-routing.module';

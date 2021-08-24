@@ -229,6 +229,9 @@
       "@spartacus/core": ["../../projects/core/public_api"],
       "@spartacus/incubator": ["../../projects/incubator/public_api"],
       "@spartacus/storefront": ["../../projects/storefrontlib/src/public_api"],
+      "@spartacus/storefront/cms": [
+        "../../projects/storefrontlib/src/testminimalcms/public_api"
+      ],
       "@spartacus/cms": ["../../projects/layout/public_api"]
     }
   },

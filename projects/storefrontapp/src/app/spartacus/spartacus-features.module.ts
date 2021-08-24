@@ -77,7 +77,6 @@ import { ProductConfiguratorTextfieldFeatureModule } from './features/product-co
 import { QualtricsFeatureModule } from './features/qualtrics-feature.module';
 import { SavedCartFeatureModule } from './features/saved-cart-feature.module';
 import { SmartEditFeatureModule } from './features/smartedit-feature.module';
-import { StorefinderFeatureModule } from './features/storefinder-feature.module';
 import { TrackingFeatureModule } from './features/tracking-feature.module';
 import { UserFeatureModule } from './features/user-feature.module';
 import { VariantsFeatureModule } from './features/variants-feature.module';
@@ -196,7 +195,7 @@ if (environment.cpq) {
     UserFeatureModule,
     CheckoutFeatureModule,
     AsmFeatureModule,
-    StorefinderFeatureModule,
+    // StorefinderFeatureModule,
     QualtricsFeatureModule,
     SmartEditFeatureModule,
     TrackingFeatureModule,

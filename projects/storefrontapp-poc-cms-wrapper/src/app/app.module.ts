@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { PageComponentModule } from '@spartacus/cms';
-import { provideDefaultConfig } from '@spartacus/core';
+import { Config } from '@spartacus/core';
+import { PageComponentModule } from '@spartacus/storefront';
 import { AppComponent } from './app.component';
 import { TestparacomponentComponent } from './testparacomponent/testparacomponent.component';
 
@@ -9,13 +9,16 @@ import { TestparacomponentComponent } from './testparacomponent/testparacomponen
   declarations: [AppComponent],
   imports: [BrowserModule, PageComponentModule.forRoot()],
   providers: [
-    provideDefaultConfig({
-      cmsComponents: {
-        CMSParagraphComponent: {
-          component: TestparacomponentComponent,
+    {
+      provide: Config,
+      useValue: {
+        cmsComponents: {
+          CMSParagraphComponent: {
+            component: TestparacomponentComponent,
+          },
         },
       },
-    }),
+    },
   ],
   bootstrap: [AppComponent],
 })

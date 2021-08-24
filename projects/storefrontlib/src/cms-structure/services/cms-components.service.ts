@@ -153,8 +153,6 @@ export class CmsComponentsService {
       this.mappings[componentType] ??
       (this.staticCmsConfig ?? this.config.cmsComponents)?.[componentType];
 
-    console.log('component config', componentConfig);
-
     if (isDevMode() && !componentConfig) {
       if (!this.missingComponents.includes(componentType)) {
         this.missingComponents.push(componentType);

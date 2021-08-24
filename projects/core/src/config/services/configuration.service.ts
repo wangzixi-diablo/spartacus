@@ -39,6 +39,9 @@ export class ConfigurationService implements OnDestroy {
     protected unifiedInjector: UnifiedInjector,
     config: Config
   ) {
+    console.log('global config', config);
+    console.log('root config', rootConfig);
+    console.log('default config', defaultConfig);
     this.config = config;
     this.unifiedConfig$ = new BehaviorSubject(config);
 
@@ -91,6 +94,9 @@ export class ConfigurationService implements OnDestroy {
       this.ambientConfig,
       this.rootConfig
     );
+
+    console.log('new truthy config', newConfig);
+
     (this.unifiedConfig$ as BehaviorSubject<Config>).next(newConfig);
 
     // compatibility mechanism, can be disabled with feature toggle
