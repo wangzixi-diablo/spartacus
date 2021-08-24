@@ -7,12 +7,19 @@ import {
   OutletPosition,
   provideOutlet,
   IconModule,
+  OutletRefModule,
 } from '@spartacus/storefront';
 import { DeliveryPickupOptionsComponent } from './delivery-pickup-options.component';
 import { DeliveryPickupOptionsDialogComponent } from './delivery-pickup-options-dialog/delivery-pickup-options-dialog.component';
 import { defaultDeliveryPickupOptionsLayoutConfig } from './delivery-pickup-options.config';
 @NgModule({
-  imports: [CommonModule, IconModule, I18nModule, RouterModule],
+  imports: [
+    CommonModule,
+    IconModule,
+    I18nModule,
+    RouterModule,
+    OutletRefModule,
+  ],
   exports: [
     DeliveryPickupOptionsComponent,
     DeliveryPickupOptionsDialogComponent,
@@ -29,6 +36,7 @@ import { defaultDeliveryPickupOptionsLayoutConfig } from './delivery-pickup-opti
       position: OutletPosition.AFTER,
       component: DeliveryPickupOptionsComponent,
     }),
+
     provideConfig(defaultDeliveryPickupOptionsLayoutConfig),
   ],
 })

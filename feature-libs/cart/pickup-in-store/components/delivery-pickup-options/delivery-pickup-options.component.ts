@@ -7,15 +7,18 @@ import {
   ViewContainerRef,
   ElementRef,
   ViewChild,
+  Optional,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import {
+  CartItemContext,
   CurrentProductService,
   LaunchDialogService,
   LAUNCH_CALLER,
 } from '@spartacus/storefront';
 import { ICON_TYPE } from '@spartacus/storefront';
+import { OrderEntry } from '@spartacus/core';
 @Component({
   selector: 'cx-delivery-pickup-options',
   templateUrl: './delivery-pickup-options.component.html',
@@ -24,18 +27,24 @@ import { ICON_TYPE } from '@spartacus/storefront';
 export class DeliveryPickupOptionsComponent implements OnInit, OnDestroy {
   @Input() availableForPickup = false;
   private subscription = new Subscription();
+  orderEntry: OrderEntry;
   data = '';
   @ViewChild('open') element: ElementRef;
-
   iconTypes = ICON_TYPE;
 
   constructor(
     protected vcr: ViewContainerRef,
     protected launchDialogService: LaunchDialogService,
-    protected currentProductService: CurrentProductService
+    protected currentProductService: CurrentProductService,
+    @Optional() protected cartItemContext: CartItemContext
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cartItemContext.item$.subscribe((item) => {
+      this.orderEntry = item;
+      console.log(item.product?.code);
+    });
+  }
 
   openDialog(): void {
     const dialog = this.launchDialogService.openDialog(
