@@ -15,7 +15,7 @@ import {
 } from '@spartacus/core';
 import { combineLatest, Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-
+import { OrderEntry } from '@spartacus/core';
 @Component({
   selector: 'cx-delivery-pickup-options-dialog.component',
   templateUrl: './delivery-pickup-options-dialog.component.html',
@@ -24,6 +24,7 @@ import { map, tap } from 'rxjs/operators';
 export class DeliveryPickupOptionsDialogComponent implements OnInit, OnDestroy {
   protected subscription = new Subscription();
   protected loggedIn = false;
+  orderEntry: OrderEntry;
 
   iconTypes = ICON_TYPE;
   @ViewChild('element') element: ElementRef;
@@ -33,7 +34,9 @@ export class DeliveryPickupOptionsDialogComponent implements OnInit, OnDestroy {
     protected activeCartService: ActiveCartService,
     protected authService: AuthService,
     protected routingService: RoutingService,
-    protected launchDialogService: LaunchDialogService
+    protected launchDialogService: LaunchDialogService,
+
+    protected el: ElementRef
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +47,10 @@ export class DeliveryPickupOptionsDialogComponent implements OnInit, OnDestroy {
       tap(([_, loggedIn]) => (this.loggedIn = loggedIn)),
       map(([activeCart]) => activeCart)
     );
+
+    this.launchDialogService.data$.subscribe((data) => {
+      this.orderEntry = data;
+    });
   }
 
   close(reason: string): void {

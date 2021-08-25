@@ -19,12 +19,7 @@
       </div>
 
       <!-- Modal Body -->
-      <ng-container *ngIf="cart$ | async as cart">
-        <ul>
-          <li *ngFor="let entry of cart.entries">{{ entry | json }}</li>
-        </ul>
-      </ng-container>
-      modal body
+      {{ orderEntry?.product?.code }}
     </div>
   </div>
 </ng-container>

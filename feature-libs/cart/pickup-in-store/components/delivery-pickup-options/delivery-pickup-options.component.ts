@@ -46,12 +46,12 @@ export class DeliveryPickupOptionsComponent implements OnInit, OnDestroy {
     });
   }
 
-  openDialog(): void {
+  openDialog(orderEntry: OrderEntry): void {
     const dialog = this.launchDialogService.openDialog(
       LAUNCH_CALLER.PICKUP_IN_STORE,
       this.element,
       this.vcr,
-      this.data
+      orderEntry
     );
 
     if (dialog) {
