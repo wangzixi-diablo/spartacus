@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { PageComponentModule } from '@spartacus/cms';
 import { Config } from '@spartacus/core';
-import { PageComponentModule } from '@spartacus/storefront';
 import { AppComponent } from './app.component';
 import { TestparacomponentComponent } from './testparacomponent/testparacomponent.component';
 

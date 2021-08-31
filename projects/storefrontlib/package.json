@@ -18,17 +18,15 @@
     "@angular/forms": "^11.2.14",
     "@angular/platform-browser": "^11.2.14",
     "@angular/router": "^11.2.14",
-    "@angular/service-worker": "^11.2.14",
-    "rxjs": "^6.6.0"
-  },
-  "optionalDependencies": {
+    "rxjs": "^6.6.0",
     "@ng-bootstrap/ng-bootstrap": "^9.0.0",
     "@ng-select/ng-select": "^6.0.1",
     "@ngrx/effects": "^11.0.0",
     "@ngrx/router-store": "^11.0.0",
     "@ngrx/store": "^11.0.0",
     "@spartacus/core": "5.0.0",
-    "ngx-infinite-scroll": "^8.0.2"
+    "ngx-infinite-scroll": "^8.0.2",
+    "@angular/service-worker": "^11.2.14"
   },
   "publishConfig": {
     "access": "public"

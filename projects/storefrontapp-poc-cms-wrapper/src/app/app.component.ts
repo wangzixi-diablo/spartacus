@@ -12,5 +12,23 @@ export class AppComponent {
     flexType: 'CMSParagraphComponent',
     typeCode: 'CMSParagraphComponent',
     uid: 'NoticeTextParagraph',
+    // properties: {
+    //   component: 'coolio',
+    //   appData: { coolio: 'cool', ok: { hi: 'bye' } },
+    //   who: ['1', '2', ['stuff', 'nested']],
+    //   emptyA: [],
+    //   emptyO: {},
+    // },
+
+    // properties: 'a',
+    // nopeee
+    // properties: 1,
+
+    // properties: [],
+    // properties: ['who'],
+    // properties: ['who', ['what', 'where']],
+
+    // properties: {},
+    // properties: { ok: 'bye' },
   };
 }

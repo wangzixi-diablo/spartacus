@@ -256,6 +256,7 @@ describe('ComponentWrapperDirective', () => {
         const testCromponemtInstance = <TestComponent>(
           fixture.debugElement.children[0].componentInstance
         );
+        console.log(testCromponemtInstance);
         expect(testCromponemtInstance.cmsData.uid).toContain('test_uid');
       });
 

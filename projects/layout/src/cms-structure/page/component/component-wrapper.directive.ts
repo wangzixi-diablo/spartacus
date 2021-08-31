@@ -86,18 +86,11 @@ export class ComponentWrapperDirective implements OnInit, OnDestroy {
     this.cmsComponentsService
       .determineMappings([this.cxComponentWrapper.flexType])
       .subscribe(() => {
-        console.log('1', this.cxComponentWrapper);
         if (
           this.cmsComponentsService.shouldRender(
             this.cxComponentWrapper.flexType
           )
         ) {
-          console.log('inside', [
-            this.cmsComponentsService.shouldRender(
-              this.cxComponentWrapper.flexType
-            ),
-            this.cxComponentWrapper,
-          ]);
           this.launchComponent();
         }
       });
@@ -108,24 +101,9 @@ export class ComponentWrapperDirective implements OnInit, OnDestroy {
       this.cxComponentWrapper.flexType
     );
 
-    console.log('who', componentMapping);
-
     if (!componentMapping) {
       return;
     }
-
-    console.log(
-      'cmscomponentservice',
-      this.cmsComponentsService.getModule(this.cxComponentWrapper.flexType)
-    );
-    console.log(
-      'cmsinjector',
-      this.cmsInjector.getInjector(
-        this.cxComponentWrapper.flexType,
-        this.cxComponentWrapper.uid,
-        this.injector
-      )
-    );
 
     this.launcherResource = this.componentHandler
       .getLauncher(
@@ -141,6 +119,13 @@ export class ComponentWrapperDirective implements OnInit, OnDestroy {
       .pipe(
         tap(({ elementRef, componentRef }) => {
           this.cmpRef = componentRef;
+
+          if (this.cxComponentWrapper.componentInstanceData !== undefined) {
+            Object.entries(
+              this.cxComponentWrapper.componentInstanceData
+            ).forEach(([key, value]) => (this.cmpRef.instance[key] = value));
+          }
+
           this.dispatchEvent(ComponentCreateEvent, elementRef);
           this.decorate(elementRef);
           this.injector.get(ChangeDetectorRef).markForCheck();
