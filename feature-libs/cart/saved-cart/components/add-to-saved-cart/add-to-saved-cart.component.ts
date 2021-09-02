@@ -15,7 +15,7 @@ import {
 } from '@spartacus/core';
 import { LaunchDialogService, LAUNCH_CALLER } from '@spartacus/storefront';
 import { combineLatest, Observable, Subscription } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'cx-add-to-saved-cart',
@@ -57,16 +57,16 @@ export class AddToSavedCartComponent implements OnInit, OnDestroy {
   }
 
   openDialog(cart: Cart) {
-    const dialog = this.launchDialogService.openDialog(
+    this.launchDialogService.openDialogAndSubscribe(
       LAUNCH_CALLER.SAVED_CART,
       this.element,
       this.vcr,
       { cart, layoutOption: 'save' }
     );
 
-    if (dialog) {
-      this.subscription.add(dialog.pipe(take(1)).subscribe());
-    }
+    // if (dialog) {
+    //   this.subscription.add(dialog.pipe(take(1)).subscribe());
+    // }
   }
 
   ngOnDestroy(): void {
