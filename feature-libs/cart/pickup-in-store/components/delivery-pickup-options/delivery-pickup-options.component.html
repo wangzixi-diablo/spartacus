@@ -1,7 +1,8 @@
-<div>
+<div *ngIf="cartLocation === 'CART'">
   <button>get it delivered</button> |
   <button (click)="openDialog(orderEntry)">Pickup from [store name]</button>
-</div>
-<pre>
-  {{ orderEntry?.product.code }}
+  <pre>
+  <!-- {{ orderEntry | json }} -->
+  {{ orderEntry?.deliveryPointOfService | json }}
 </pre>
+</div>

@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import {
   CartItemContext,
+  CartItemContextSource,
   CurrentProductService,
   LaunchDialogService,
   LAUNCH_CALLER,
@@ -29,6 +30,7 @@ export class DeliveryPickupOptionsComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   orderEntry: OrderEntry;
   data = '';
+  cartLocation = '';
   @ViewChild('open') element: ElementRef;
   iconTypes = ICON_TYPE;
 
@@ -36,13 +38,17 @@ export class DeliveryPickupOptionsComponent implements OnInit, OnDestroy {
     protected vcr: ViewContainerRef,
     protected launchDialogService: LaunchDialogService,
     protected currentProductService: CurrentProductService,
+    protected cartItemContextSource: CartItemContextSource,
     @Optional() protected cartItemContext: CartItemContext
   ) {}
 
   ngOnInit() {
     this.cartItemContext.item$.subscribe((item) => {
       this.orderEntry = item;
-      console.log(item.product?.code);
+      console.log(item);
+    });
+    this.cartItemContextSource.location$.subscribe((location) => {
+      this.cartLocation = location;
     });
   }
 
