@@ -16,12 +16,12 @@ export type SsrCallbackFn = (
   /**
    * HTML response.
    */
-  html?: string | undefined,
-  /**
-   * An indicator if `this.waitingRenderCallbacks` is being processed.
-   * Mitigates the infinite loop.
-   */
-  waitingRendersProcessing?: boolean
+  html?: string | undefined
+  // /**
+  //  * An indicator if `this.waitingRenderCallbacks` is being processed.
+  //  * Mitigates the infinite loop.
+  //  */
+  // firstRequest?: boolean
 ) => void;
 
 /**
@@ -42,6 +42,9 @@ export class OptimizedSsrEngine {
    * the initial render outputs the html.
    */
   private waitingRenderCallbacks: Record<string, SsrCallbackFn[] | null> = {};
+
+  // SPIKE TODO REMOVE
+  private requestsCounter = 0;
 
   get engineInstance(): NgExpressEngineInstance {
     return this.renderResponse.bind(this);
@@ -168,6 +171,9 @@ export class OptimizedSsrEngine {
     options: any,
     callback: SsrCallbackFn
   ): void {
+    const requestsCounter = ++this.requestsCounter;
+    console.log('requestsCounter', requestsCounter);
+
     const request: Request = options.req;
     const response: Response = options.res || options.req.res;
 
@@ -227,11 +233,21 @@ export class OptimizedSsrEngine {
 
         this.log(`Rendering started (${request?.originalUrl})`);
 
-        const renderCallback: SsrCallbackFn = (
-          err,
-          html,
-          waitingRendersProcessing
-        ) => {
+        // TODO: fix the condition below:
+        const firstRequest =
+          this.ssrOptions?.reuseCurrentRendering &&
+          !this.waitingRenderCallbacks[renderingKey];
+        console.log(
+          'preparing callback for the request no.',
+          requestsCounter,
+          ` is it the first son?`,
+          firstRequest
+        );
+        const renderCallback: SsrCallbackFn = (err, html) => {
+          console.log(
+            'executing internal callback for the request No',
+            requestsCounter
+          );
           if (!maxRenderTimeout) {
             // ignore this render's result because it exceeded maxRenderTimeout
             this.log(
@@ -242,7 +258,7 @@ export class OptimizedSsrEngine {
           clearTimeout(maxRenderTimeout);
           // we've taken only one slot for the first request which triggered the render.
           // therefore, all subsequent requests waiting for the same render should not decrease the concurrency slots.
-          if (!waitingRendersProcessing) {
+          if (firstRequest) {
             this.currentConcurrency--;
           }
 
@@ -264,17 +280,14 @@ export class OptimizedSsrEngine {
             this.renderingCache.store(renderingKey, err, html);
           }
 
-          if (
-            this.ssrOptions?.reuseCurrentRendering &&
-            !waitingRendersProcessing
-          ) {
+          if (this.ssrOptions?.reuseCurrentRendering && firstRequest) {
             if (this.waitingRenderCallbacks[renderingKey]?.length) {
               this.log(
                 `Processing ${this.waitingRenderCallbacks[renderingKey]?.length} waiting SSR requests for ${request.originalUrl}...`
               );
             }
             this.waitingRenderCallbacks[renderingKey]?.forEach((cb) =>
-              cb(err, html, true)
+              cb(err, html)
             );
             this.waitingRenderCallbacks[renderingKey] = null;
           }
