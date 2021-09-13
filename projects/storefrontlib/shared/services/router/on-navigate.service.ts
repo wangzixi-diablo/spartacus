@@ -12,7 +12,7 @@ import { OnNavigateConfig } from './config';
   providedIn: 'root',
 })
 export class OnNavigateService implements OnDestroy {
-  protected resetViewOnNavigateSubscription: Subscription;
+  protected subscriptions: Subscription;
 
   constructor(
     protected config: OnNavigateConfig,
@@ -26,7 +26,7 @@ export class OnNavigateService implements OnDestroy {
   initializeWithConfig(): void {
     if (this.config?.enableResetViewOnNavigate?.active) {
       this.setResetViewOnNavigateSubscription(
-        this.config?.enableResetViewOnNavigate.active
+        this.config.enableResetViewOnNavigate.active
       );
     }
   }
@@ -36,17 +36,16 @@ export class OnNavigateService implements OnDestroy {
    * @param enable Enable or disable this feature. Set this to an array of BREAKPOINTS to enable for specified screen widths.
    */
   setResetViewOnNavigateSubscription(enable: boolean): void {
-    this.resetViewOnNavigateSubscription?.unsubscribe();
+    this.subscriptions?.unsubscribe();
 
     /**
      * This entire service may be dropped and this is just a draft
      *
      * Won't be included to 4.0 anymore, but is an improvement to current behavior
-     * focus and navigation should go hand to hand too
      */
 
     if (enable) {
-      this.resetViewOnNavigateSubscription = this.router.events
+      this.subscriptions = this.router.events
         .pipe(
           filter((event): event is Scroll => event instanceof Scroll),
           pairwise()
@@ -71,25 +70,27 @@ export class OnNavigateService implements OnDestroy {
              * need to make it configurable
              *
              **/
+            console.log('in here,', current);
 
-            this.viewportScroller.scrollToPosition(current.position);
+            setTimeout(() => {
+              this.viewportScroller.scrollToPosition(current.position);
+            }, 5000);
           } else {
-            /*
-             * if pre.afterRedirectUrl.splt('?')[0] ! == curr.afterRedirectionUrl.split('?')[0]
-             * || if route.include(routes)
-             * || if etc
-             *
-             * exclude paths / query param / etc to not go on top
-             * need to make it configurable
-             **/
-
-            this.viewportScroller.scrollToPosition([0, 0]);
+            if (
+              current.routerEvent.urlAfterRedirects.includes('organization')
+            ) {
+              console.log('what', [
+                previous.routerEvent.urlAfterRedirects.split('?')[0],
+                current.routerEvent.urlAfterRedirects.split('?')[0],
+              ]);
+              this.viewportScroller.scrollToPosition([0, 0]);
+            }
           }
         });
     }
   }
 
   ngOnDestroy(): void {
-    this.resetViewOnNavigateSubscription?.unsubscribe();
+    this.subscriptions?.unsubscribe();
   }
 }

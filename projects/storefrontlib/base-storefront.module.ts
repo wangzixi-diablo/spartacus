@@ -14,8 +14,8 @@ import { KeyboardFocusModule } from './layout/a11y/keyboard-focus/keyboard-focus
 import { SkipLinkModule } from './layout/a11y/skip-link/skip-link.module';
 import { LayoutModule } from './layout/layout.module';
 import { StorefrontComponentModule } from './layout/main/storefront-component.module';
-import { AppRoutingModule } from './layout/router/app-routing.module';
 import { MediaModule } from './shared/components/media/media.module';
+import { AppRoutingModule } from './shared/services/router/app-routing.module';
 
 @NgModule({
   imports: [

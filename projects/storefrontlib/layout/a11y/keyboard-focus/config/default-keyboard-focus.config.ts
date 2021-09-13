@@ -1,8 +1,9 @@
 import { KeyboardFocusConfig } from './keyboard-focus.config';
 
 export const defaultKeyboardFocusConfig: KeyboardFocusConfig = {
+  // TODO: BRIAN TO FIX FILES FOR DEPRECATION
   keyboardFocus: {
-    enableResetFocusOnNavigate: true,
-    enableResetViewOnNavigate: true,
+    enableResetFocusOnNavigate: false,
+    enableResetViewOnNavigate: false,
   },
 };
