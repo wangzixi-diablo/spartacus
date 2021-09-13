@@ -20,6 +20,7 @@ import {
 export const ELECTRONICS_BASESITE = 'electronics-spa';
 export const ELECTRONICS_CURRENCY = 'USD';
 
+export const timeoutVal = Number(Cypress.env("REFRESH_TOKEN_VAL"));
 /**
  * Clicks the main menu (on mobile only)
  */
@@ -139,16 +140,22 @@ export function fillAddressForm(shippingAddressData: AddressData = user) {
   fillShippingAddress(shippingAddressData);
 }
 
-export function verifyDeliveryMethod() {
+export function verifyDeliveryMethod(sessionTimeout: boolean = false) {
   cy.log('🛒 Selecting delivery method');
   cy.get('.cx-checkout-title').should('contain', 'Shipping Method');
   cy.get('cx-delivery-mode input').first().should('be.checked');
+  let paymentPageHttpResponseCode = 200;
   const paymentPage = waitForPage(
     '/checkout/payment-details',
     'getPaymentPage'
   );
+  if (sessionTimeout){
+    cy.wait(timeoutVal);
+    paymentPageHttpResponseCode = 401;
+  }
   cy.get('.cx-checkout-btns button.btn-primary').click();
-  cy.wait(`@${paymentPage}`).its('status').should('eq', 200);
+
+  cy.wait(`@${paymentPage}`).its('status').should('eq', paymentPageHttpResponseCode);
 }
 
 export function fillPaymentForm(
@@ -297,8 +304,12 @@ export function addCheapProductToCart(
 
 export function fillAddressFormWithCheapProduct(
   shippingAddressData: AddressData = user,
-  cartData: SampleCartProduct = cartWithCheapProduct
+  cartData: SampleCartProduct = cartWithCheapProduct,
+  sessionTimeout: boolean = false
 ) {
+  let sessionTimeoutVal: boolean = sessionTimeout;
+  console.log("Session Timeout at Fill address Cheap Product: ", sessionTimeoutVal)
+
   cy.log('🛒 Filling shipping address form');
 
   cy.get('.cx-checkout-title').should('contain', 'Shipping Address');
@@ -310,9 +321,41 @@ export function fillAddressFormWithCheapProduct(
     '/checkout/delivery-mode',
     'getDeliveryPage'
   );
-  fillShippingAddress(shippingAddressData);
-  cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+  fillShippingAddress(shippingAddressData, true, sessionTimeout);
+  if(!sessionTimeout){
+    cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+  }
 }
+
+export function selectDefaultAddress(
+  shippingAddressData: AddressData = user,
+  cartData: SampleCartProduct = cartWithCheapProduct,
+  sessionTimeout: boolean = false
+){
+  cy.log('🛒 Selecting default shipping address');
+
+  cy.get('.cx-checkout-title').should('contain', 'Shipping Address');
+  cy.get('cx-order-summary .cx-summary-partials .cx-summary-row')
+    .first()
+    .find('.cx-summary-amount')
+    .should('contain', cartData.total);
+
+  const deliveryPage = waitForPage(
+    '/checkout/delivery-mode',
+    'getDeliveryPage'
+  );
+  
+  // Select default address. 
+  cy.get('.cx-card-title')
+    .should('contain', 'Default Shipping Address');
+
+  if(!sessionTimeout){
+    //cy.get('cx-place-order button.btn-primary').click();
+    cy.get('.cx-checkout-btns button.btn-primary').click();
+    cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+  }
+}
+
 
 export function fillPaymentFormWithCheapProduct(
   paymentDetailsData: PaymentDetails = user,

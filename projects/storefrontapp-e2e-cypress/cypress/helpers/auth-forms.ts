@@ -49,6 +49,8 @@ export function register(
 ) {
   fillRegistrationForm(user, giveRegistrationConsent, hiddenConsent);
   cy.get('cx-register form').within(() => {
+    //cy.wait(70000)
+    //cy.wait(190000)
     cy.get('button[type="submit"]').click();
   });
 }
