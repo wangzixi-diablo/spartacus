@@ -124,12 +124,6 @@ export class ComponentWrapperDirective implements OnInit, OnDestroy {
           this.cmpRef = componentRef;
           this.cxComponentRef.emit(componentRef);
 
-          if (this.cxComponentWrapper.componentInstanceData !== undefined) {
-            Object.entries(
-              this.cxComponentWrapper.componentInstanceData
-            ).forEach(([key, value]) => (this.cmpRef.instance[key] = value));
-          }
-
           console.log('coolio', this.cmpRef);
 
           this.dispatchEvent(ComponentCreateEvent, elementRef);
