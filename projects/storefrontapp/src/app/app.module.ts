@@ -20,9 +20,14 @@ import {
   RoutingConfig,
   TestConfigModule,
 } from '@spartacus/core';
-import { AppRoutingModule, StorefrontComponent } from '@spartacus/storefront';
+import {
+  AppRoutingModule,
+  OnNavigateService,
+  StorefrontComponent,
+} from '@spartacus/storefront';
 import { environment } from '../environments/environment';
 import { TestOutletModule } from '../test-outlets/test-outlet.module';
+import { CustomNavigationService } from './custom-navigation.service';
 import { SpartacusModule } from './spartacus/spartacus.module';
 
 registerLocaleData(localeDe);
@@ -81,6 +86,7 @@ if (!environment.production) {
         level: '4.0',
       },
     }),
+    { provide: OnNavigateService, useClass: CustomNavigationService },
   ],
   bootstrap: [StorefrontComponent],
 })
