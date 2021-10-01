@@ -1,4 +1,8 @@
-const productCodes = {
+export interface ProductCodes {
+  [baseSite: string]: string[];
+}
+
+export const productCodes: ProductCodes = {
   'electronics-spa': [
     '832386',
     '3965240',
@@ -101,8 +105,4 @@ const productCodes = {
     '1322041',
     '1320808',
   ],
-};
-
-module.exports = {
-  productCodes,
 };

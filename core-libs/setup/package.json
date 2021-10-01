@@ -29,6 +29,6 @@
     "access": "public"
   },
   "scripts": {
-    "loadtest:ssr": "node ./ssr/testing/loadtest.js"
+    "loadtest:ssr": "ts-node ./ssr/testing/loadtest.ts"
   }
 }
