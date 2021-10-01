@@ -1,5 +1,10 @@
 import { ViewportScroller } from '@angular/common';
-import { Injectable } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentRef,
+  Injectable,
+  Injector,
+} from '@angular/core';
 import { Router, Scroll } from '@angular/router';
 import { combineLatest, Observable, of, Subscription } from 'rxjs';
 import { filter, pairwise } from 'rxjs/operators';
@@ -11,10 +16,16 @@ import { OnNavigateConfig } from './config';
 export class OnNavigateService {
   protected subscription: Subscription;
 
+  get hostComponent(): ComponentRef<any> {
+    return this.injector.get(ApplicationRef)?.components?.[0];
+  }
+
   constructor(
     protected config: OnNavigateConfig,
     protected router: Router,
-    protected viewportScroller: ViewportScroller
+    protected viewportScroller: ViewportScroller,
+    // remove injector to see the scroll working properly / compare with the epic if you don't want to remove it and add it back
+    protected injector: Injector
   ) {}
 
   /**
@@ -28,10 +39,13 @@ export class OnNavigateService {
 
   /**
    * Resets view back to the original position when performing a back navigation and to the top when performing a front navigation
+   * and places focus back to the top of the page on any type of navigation
    * @param enable Enable or disable this feature
    */
   setResetViewOnNavigate(enable: boolean): void {
     this.subscription?.unsubscribe();
+
+    console.log('data gone', this.hostComponent);
 
     if (enable) {
       this.subscription = combineLatest([

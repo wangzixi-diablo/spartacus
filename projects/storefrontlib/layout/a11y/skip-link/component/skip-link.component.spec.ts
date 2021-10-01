@@ -112,11 +112,4 @@ fdescribe('SkipLinkComponent', () => {
     expect(spyComponent).toHaveBeenCalledWith(mockSkipLinks[2]);
     expect(spyComponent).toHaveBeenCalledTimes(3);
   });
-
-  it('should focus on the host (skiplinkcomponent) when navigating through pages', () => {
-    spyOn(eventService, 'get').and.returnValue(of(mockNavigateEvent));
-
-    expect(skipLinkComponent.host?.focus).toHaveBeenCalled();
-    expect(skipLinkComponent.host?.blur).toHaveBeenCalled();
-  });
 });

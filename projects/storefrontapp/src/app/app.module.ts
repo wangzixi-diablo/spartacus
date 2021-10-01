@@ -81,6 +81,7 @@ if (!environment.production) {
         level: '4.0',
       },
     }),
+    // { provide: OnNavigateService, useClass: CustomNavigationService },
   ],
   bootstrap: [StorefrontComponent],
 })
