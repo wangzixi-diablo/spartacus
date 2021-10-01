@@ -27,5 +27,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "loadtest:ssr": "node ./ssr/testing/loadtest.js"
   }
 }
