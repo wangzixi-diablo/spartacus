@@ -8,6 +8,7 @@
     "runMode": 2
   },
   "videoUploadOnPasses": false,
+  "chromeWebSecurity": false,
   "env": {
     "API_URL": "https://spartacus-devci7675.eastus.cloudapp.azure.com:9002",
     "CLIENT_ID": "mobile_android",
