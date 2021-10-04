@@ -3,7 +3,7 @@ import { productCodes } from './data/product-codes';
 import { CONFIG } from './loadtest-config';
 
 class RequestGenerator {
-  private maxDifferentUrls = 50;
+  private maxDifferentUrls;
   private urlId = 0;
   private testNumber = Date.now(); // used to group all requests from a single test run
 
