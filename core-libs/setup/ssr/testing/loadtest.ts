@@ -36,7 +36,7 @@ class RequestGenerator {
 }
 
 class ResponsesHandler {
-  private noCacheCount = 0;
+  private cacheNoStoreCount = 0;
   private errorCount = 0;
   private responseCount = 0;
 
@@ -49,11 +49,12 @@ class ResponsesHandler {
     }
 
     if (result?.headers?.['cache-control'] === 'no-store') {
-      this.noCacheCount++;
+      this.cacheNoStoreCount++;
     }
   };
 
-  getNoCacheRatio = () => (this.noCacheCount * 100) / this.responseCount;
+  getCacheNoStoreRatio = () =>
+    (this.cacheNoStoreCount * 100) / this.responseCount;
 
   getErrorRatio = () => this.errorCount / this.responseCount;
 }
@@ -74,7 +75,7 @@ loadtest.loadTest(
   (error: any, _result: any) => {
     setTimeout(() => {
       console.log('Tests run successfully!');
-      console.log('CSR/total ratio', responsesHandler.getNoCacheRatio(), `%`);
+      console.log('CSR/total ratio', responsesHandler.getNoCachseRatio(), `%`);
 
       if (error) {
         return console.error('Got an error: %s', error);
