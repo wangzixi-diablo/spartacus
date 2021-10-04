@@ -35,7 +35,7 @@ class RequestGenerator {
   };
 }
 
-class TestResults {
+class ResponsesHandler {
   private noCacheCount = 0;
   private errorCount = 0;
   private responseCount = 0;
@@ -59,7 +59,7 @@ class TestResults {
 }
 
 ////// TEST //////
-const testResults = new TestResults();
+const responsesHandler = new ResponsesHandler();
 const requestGenerator = new RequestGenerator({
   maxDifferentUrls: CONFIG.maxDifferentUrls,
 });
@@ -69,12 +69,12 @@ loadtest.loadTest(
     maxRequests: CONFIG.maxRequests,
     concurrency: CONFIG.concurrency,
     requestGenerator: requestGenerator.generateRequest,
-    statusCallback: testResults.handleResponse,
+    statusCallback: responsesHandler.handleResponse,
   },
   (error: any, _result: any) => {
     setTimeout(() => {
       console.log('Tests run successfully!');
-      console.log('CSR/total ratio', testResults.getNoCacheRatio(), `%`);
+      console.log('CSR/total ratio', responsesHandler.getNoCacheRatio(), `%`);
 
       if (error) {
         return console.error('Got an error: %s', error);
