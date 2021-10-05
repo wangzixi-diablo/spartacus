@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef,
   QueryList,
-  ViewChildren,
+  ViewChildren, HostBinding,
 } from '@angular/core';
 import {
   ConfiguratorRouter,
@@ -16,7 +16,7 @@ import {
   ICON_TYPE,
 } from '@spartacus/storefront';
 import { Observable, of } from 'rxjs';
-import { filter, map, switchMap, take } from 'rxjs/operators';
+import { filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { ConfiguratorCommonsService } from '../../core/facade/configurator-commons.service';
 import { ConfiguratorGroupsService } from '../../core/facade/configurator-groups.service';
 import { Configurator } from '../../core/model/configurator.model';
@@ -30,6 +30,7 @@ import { ConfiguratorGroupMenuService } from './configurator-group-menu.componen
 })
 export class ConfiguratorGroupMenuComponent {
   @ViewChildren('groupItem') groups: QueryList<ElementRef<HTMLElement>>;
+  @HostBinding('class.ghost') hasGhostData = false;
 
   routerData$: Observable<ConfiguratorRouter.Data> =
     this.configRouterExtractorService.extractRouterData();
@@ -55,7 +56,10 @@ export class ConfiguratorGroupMenuComponent {
             )
           )
 
-          .pipe(map((cont) => cont.configuration))
+          .pipe(map((cont) => cont.configuration),
+            tap(() => {
+              this.hasGhostData = true;
+            }))
       )
     );
 

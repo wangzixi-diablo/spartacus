@@ -1,4 +1,6 @@
 %cx-configurator-group-menu {
+  @extend %ghost !optional;
+
   .cx-group-menu {
     list-style-type: none;
     background-color: #ffffff;
@@ -172,6 +174,27 @@
       margin-inline-end: 5px;
       margin-block-start: 5px;
       margin-block-end: 5px;
+    }
+  }
+}
+
+%ghost {
+  &.ghost {
+    .cx-group-menu {
+      color: transparent;
+      display: inline-block;
+      width: 98%;
+
+      .cx-menu-item {
+        margin-block-end: 5px;
+        background-color: var(--cx-color-ghost);
+        border: none;
+        height: 57px;
+      }
+
+      &:last-child {
+        border: none;
+      }
     }
   }
 }

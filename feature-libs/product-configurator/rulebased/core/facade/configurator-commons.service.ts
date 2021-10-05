@@ -32,8 +32,7 @@ export class ConfiguratorCommonsService {
   };
   ghostGroup: Configurator.Group = {
     id: '1',
-    description: 'Ghost group',
-    name: 'Ghost group',
+    //description: 'Ghost group',
     subGroups: [],
     attributes: [this.ghostAttribute],
     complete: true,
@@ -41,7 +40,7 @@ export class ConfiguratorCommonsService {
   };
   ghost: Configurator.Configuration = {
     configId: 'ghost',
-    groups: [this.ghostGroup],
+    groups: new Array(10).fill(this.ghostGroup),
     flatGroups: [this.ghostGroup],
     interactionState: {},
     owner: {
