@@ -1,5 +1,5 @@
-@import './link';
-@import './breadcrumb';
-@import './navigation-ui';
-@import './category-navigation';
-@import './footer-navigation';
+@forward './link';
+@forward './breadcrumb';
+@forward './navigation-ui';
+@forward './category-navigation';
+@forward './footer-navigation';

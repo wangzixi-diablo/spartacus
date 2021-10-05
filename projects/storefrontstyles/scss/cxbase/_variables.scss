@@ -9,8 +9,8 @@
 // Also be aware of items that should be configurable.
 // The Sparta buttons use uppercase type but future themes may want normal case
 // so a variable was created to make this available for other themes.
-@import 'functions';
-@import '~bootstrap/scss/variables';
+@forward 'functions';
+@use '~bootstrap/scss/variables' as *;
 
 $background: $white !default;
 $inverse: $white !default;

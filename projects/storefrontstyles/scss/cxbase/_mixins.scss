@@ -2,14 +2,14 @@
 // lower level bootstrap variables. Hence we import the variables here,
 // to make the mixins reusable. In order to have the right variables
 // we load variables through the theme import.  */
-@import '../theme';
+@forward '../theme';
 
-@import '~bootstrap/scss/_mixins';
+@forward '~bootstrap/scss/_mixins';
 
-@import './mixins/reset';
-@import './mixins/weight';
-@import './mixins/type';
-@import './mixins/button-reset';
-@import './mixins/placeholder';
-@import './mixins/transformations';
-@import './mixins/visible-focus';
+@forward './mixins/reset';
+@forward './mixins/weight';
+@forward './mixins/type';
+@forward './mixins/button-reset';
+@forward './mixins/placeholder';
+@forward './mixins/transformations';
+@forward './mixins/visible-focus';

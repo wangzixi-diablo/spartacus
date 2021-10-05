@@ -1,4 +1,4 @@
-@import '../../product/carousel/product-carousel';
+@forward '../../product/carousel/product-carousel';
 
 %cx-merchandising-carousel {
   @extend %cx-product-carousel;

@@ -1,5 +1,5 @@
-@import '../../theme';
-@import '~bootstrap/scss/tooltip';
+@forward '../../theme';
+@use '~bootstrap/scss/tooltip' as *;
 
 .bs-tooltip-left {
   .arrow {

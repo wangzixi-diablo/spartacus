@@ -1,7 +1,7 @@
 // we require a few bootstrap files for the CSS in this code
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/_mixins';
+@forward '~bootstrap/scss/functions';
+@forward '~bootstrap/scss/variables';
+@forward '~bootstrap/scss/_mixins';
 
 @mixin visible-focus {
   outline-style: solid;
@@ -27,5 +27,5 @@
   background-color: transparent;
 }
 
-@import './bulk-pricing/index';
-@import './variants/index';
+@forward './bulk-pricing/index';
+@forward './variants/index';

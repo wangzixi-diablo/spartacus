@@ -1,8 +1,8 @@
-@import './search/index';
-@import './list/index';
-@import './details/index';
-@import './carousel/index';
-@import './star-rating';
+@forward './search/index';
+@forward './list/index';
+@forward './details/index';
+@forward './carousel/index';
+@forward './star-rating';
 
 $product-components-allowlist: mergeAll(
   (

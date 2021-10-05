@@ -1,6 +1,6 @@
-@import '../../theme';
-@import '../../functions';
-@import '../../mixins';
+@forward '../../theme';
+@forward '../../functions';
+@forward '../../mixins';
 
 .cx-app {
   &__breadcrumb {

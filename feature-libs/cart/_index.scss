@@ -1,10 +1,10 @@
-@import '~@spartacus/styles/scss/core';
-@import '~@spartacus/styles/scss/app';
-@import '~@spartacus/styles/scss/components/cart/cart-details';
+@forward '~@spartacus/styles/scss/core';
+@forward '~@spartacus/styles/scss/app';
+@forward '~@spartacus/styles/scss/components/cart/cart-details';
 
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/_mixins';
+@forward '~bootstrap/scss/functions';
+@forward '~bootstrap/scss/variables';
+@forward '~bootstrap/scss/_mixins';
 
 @mixin visible-focus {
   outline-style: solid;
@@ -14,5 +14,5 @@
   transition: none;
 }
 
-@import './saved-cart/index';
-@import './quick-order/index';
+@forward './saved-cart/index';
+@forward './quick-order/index';

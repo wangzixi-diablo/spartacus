@@ -1,8 +1,8 @@
-@import './banner/index';
-@import './navigation/index';
-@import './media/index';
-@import './tab-paragraph-container/index';
-@import './global-message/index';
+@forward './banner/index';
+@forward './navigation/index';
+@forward './media/index';
+@forward './tab-paragraph-container/index';
+@forward './global-message/index';
 
 $content-components-allowlist: cx-banner, cx-link, cx-media, cx-carousel,
   cx-banner-carousel, cx-global-message, cx-navigation-ui, cx-footer-navigation,

@@ -1,5 +1,5 @@
-@import '../../theme';
-@import '~bootstrap/scss/card';
+@forward '../../theme';
+@forward '~bootstrap/scss/card';
 
 .card {
   border-radius: 0;

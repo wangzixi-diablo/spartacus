@@ -1,9 +1,9 @@
-@import '~@spartacus/styles/scss/core';
+@forward '~@spartacus/styles/scss/core';
 
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
+@forward '~bootstrap/scss/functions';
+@forward '~bootstrap/scss/variables';
+@forward '~bootstrap/scss/mixins';
 
-@import './mixins/index';
-@import './components/index';
-@import './layout/index';
+@forward './mixins/index';
+@forward './components/index';
+@forward './layout/index';

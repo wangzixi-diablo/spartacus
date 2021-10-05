@@ -3,5 +3,5 @@
 //@import 'cxbase/variables';
 
 //point to the theme variables
-@import 'theme/sparta/variables';
-//@import "theme/lambda/variables";
+@forward 'theme/sparta/variables';
+//@forward "theme/lambda/variables";

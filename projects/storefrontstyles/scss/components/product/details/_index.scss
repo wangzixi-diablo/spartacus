@@ -1,7 +1,7 @@
-@import './product-attributes';
-@import './product-images';
-@import './product-intro';
-@import './product-reviews';
-@import './product-summary';
-@import './stock-notification/stock-notification-dialog';
-@import './stock-notification/stock-notification';
+@forward './product-attributes';
+@forward './product-images';
+@forward './product-intro';
+@forward './product-reviews';
+@forward './product-summary';
+@forward './stock-notification/stock-notification-dialog';
+@forward './stock-notification/stock-notification';

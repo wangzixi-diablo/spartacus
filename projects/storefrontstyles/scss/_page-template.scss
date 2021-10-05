@@ -1,6 +1,6 @@
-@import './cxbase/mixins';
+@forward './cxbase/mixins';
 
-@import './layout/index';
+@forward './layout/index';
 
 // TODO (#11607) remove LoginPageTemplate from allowlist
 

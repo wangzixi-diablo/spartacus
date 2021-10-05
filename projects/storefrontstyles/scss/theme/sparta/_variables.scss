@@ -7,7 +7,7 @@
 //   3) Set new values for component variables - app/__/_.scss
 // You cannot:
 //   1) Add new variables
-@import '../../cxbase/functions';
+@forward '../../cxbase/functions';
 
 //fonts (see _fonts.scss to import)
 $font-family-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont,
@@ -79,7 +79,7 @@ $type: (
 );
 
 //bring in variable defaults
-@import '../../cxbase/variables';
+@forward '../../cxbase/variables';
 
 // GLOBAL VARIABLE OVERRIDES
 // These can be set with anything above or any variables exposed in Bootsrap or cxbase

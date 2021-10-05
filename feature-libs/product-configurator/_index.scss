@@ -1,5 +1,5 @@
-@import '~@spartacus/styles/scss/core';
+@forward '~@spartacus/styles/scss/core';
 
-@import './common/index';
-@import './rulebased/index';
-@import './textfield/index';
+@forward './common/index';
+@forward './rulebased/index';
+@forward './textfield/index';

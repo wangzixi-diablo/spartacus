@@ -1,44 +1,44 @@
 //Fonts must be added separate from the theme
-@import 'fonts';
+@forward 'fonts';
 
 // Bootstrap modules (these are things we are NOT changing at all)
-@import '~bootstrap/scss/reboot';
-@import '~bootstrap/scss/type';
-@import '~bootstrap/scss/grid';
-@import '~bootstrap/scss/utilities';
-@import '~bootstrap/scss/transitions';
-@import '~bootstrap/scss/dropdown';
-@import '~bootstrap/scss/card';
-@import '~bootstrap/scss/nav';
+@forward '~bootstrap/scss/reboot';
+@forward '~bootstrap/scss/type';
+@forward '~bootstrap/scss/grid';
+@forward '~bootstrap/scss/utilities';
+@forward '~bootstrap/scss/transitions';
+@forward '~bootstrap/scss/dropdown';
+@forward '~bootstrap/scss/card';
+@forward '~bootstrap/scss/nav';
 
-@import '~@ng-select/ng-select/themes/default.theme.css';
+@forward '~@ng-select/ng-select/themes/default.theme.css';
 
 // new
-@import 'cxbase/index';
+@forward 'cxbase/index';
 
 //bootstrap enhancements (these are things we ARE changing)
-@import 'cxbase/blocks/buttons';
-@import 'cxbase/blocks/forms';
-@import 'cxbase/blocks/modal';
-@import 'cxbase/blocks/alert';
-@import 'cxbase/blocks/message';
-@import 'cxbase/blocks/tooltip';
-@import 'cxbase/blocks/tables';
-@import 'cxbase/blocks/card';
-@import 'cxbase/blocks/accordion';
-@import 'cxbase/blocks/tabs';
-@import 'cxbase/blocks/carousel';
-@import 'cxbase/blocks/link';
-@import 'cxbase/blocks/dropdown';
+@forward 'cxbase/blocks/buttons';
+@forward 'cxbase/blocks/forms';
+@forward 'cxbase/blocks/modal';
+@forward 'cxbase/blocks/alert';
+@forward 'cxbase/blocks/message';
+@forward 'cxbase/blocks/tooltip';
+@forward 'cxbase/blocks/tables';
+@forward 'cxbase/blocks/card';
+@forward 'cxbase/blocks/accordion';
+@forward 'cxbase/blocks/tabs';
+@forward 'cxbase/blocks/carousel';
+@forward 'cxbase/blocks/link';
+@forward 'cxbase/blocks/dropdown';
 //layout
-@import 'cxbase/layout/app';
-@import 'cxbase/layout/page';
-@import 'cxbase/layout/section';
+@forward 'cxbase/layout/app';
+@forward 'cxbase/layout/page';
+@forward 'cxbase/layout/section';
 //non-bootstrap blocks and components here below
-@import 'cxbase/blocks/paragraph';
+@forward 'cxbase/blocks/paragraph';
 
 // effects & animations
-@import 'cxbase/animations';
+@forward 'cxbase/animations';
 
-@import 'misc/hamburger';
-@import 'misc/dialog';
+@forward 'misc/hamburger';
+@forward 'misc/dialog';

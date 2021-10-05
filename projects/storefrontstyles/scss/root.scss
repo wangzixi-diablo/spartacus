@@ -1,4 +1,4 @@
-@import 'theme';
+@forward 'theme';
 
 :root {
   @each $color, $value in $theme-colors {

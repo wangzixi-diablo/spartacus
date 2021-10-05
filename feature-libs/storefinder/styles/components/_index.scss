@@ -1,14 +1,14 @@
-@import './store-finder';
-@import './store-finder-grid';
-@import './store-finder-list-item';
-@import './store-finder-store-description';
-@import './store-finder-stores-count';
-@import './store-finder-search-result';
-@import './store-finder-list';
-@import './store-finder-search';
-@import './store-finder-schedule';
-@import './store-finder-map';
-@import './store-finder-store';
+@forward './store-finder';
+@forward './store-finder-grid';
+@forward './store-finder-list-item';
+@forward './store-finder-store-description';
+@forward './store-finder-stores-count';
+@forward './store-finder-search-result';
+@forward './store-finder-list';
+@forward './store-finder-search';
+@forward './store-finder-schedule';
+@forward './store-finder-map';
+@forward './store-finder-store';
 
 $store-finder-components-allowlist: cx-store-finder-list-item,
   cx-store-finder-grid, cx-store-finder, cx-store-finder-store-description,

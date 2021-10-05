@@ -1,5 +1,5 @@
-@import './functions';
-@import './components/index';
+@forward './functions';
+@forward './components/index';
 
 // the $skipComponentStyles is used as a list of component styles that can be ignore
 // during the sass compilation. Whenever the list contains a component selector, the

@@ -1,4 +1,4 @@
-@import 'weight';
+@use 'weight' as *;
 
 @mixin type($size: 'default', $weight: 'default') {
   $size_: $font-size-base;

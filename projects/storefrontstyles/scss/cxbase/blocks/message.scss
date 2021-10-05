@@ -1,5 +1,5 @@
-@import '../../theme';
-@import '../../mixins';
+@forward '../../theme';
+@forward '../../mixins';
 
 .cx-message {
   color: var(--cx-color-text);
