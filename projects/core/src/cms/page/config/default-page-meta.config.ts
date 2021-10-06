@@ -42,5 +42,6 @@ export const defaultPageMetaConfig: PageMetaConfig = {
       removeQueryParams: true,
       forceTrailingSlash: true,
     },
+    enableInDevMode: true,
   },
 };

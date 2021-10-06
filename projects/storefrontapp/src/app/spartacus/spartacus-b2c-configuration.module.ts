@@ -15,13 +15,9 @@ import {
     provideConfig(<SiteContextConfig>{
       context: {
         urlParameters: ['baseSite', 'language', 'currency'],
-        baseSite: [
-          'electronics-spa',
-          'electronics',
-          'apparel-de',
-          'apparel-uk',
-          'apparel-uk-spa',
-        ],
+        baseSite: ['cassinelli-spa'],
+        language: ['es_PE'],
+        currency: ['PEN'],
       },
     }),
     provideConfig(<PWAModuleConfig>{
