@@ -8,8 +8,8 @@ import {
   Product,
   ProductAdapter,
 } from '@spartacus/core';
-import { Observable, of } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable, of, queueScheduler } from 'rxjs';
+import { delay, observeOn, switchMap, take, tap } from 'rxjs/operators';
 import { QuickOrderService } from './quick-order.service';
 
 const mockProduct1Code: string = 'mockCode1';
@@ -26,6 +26,7 @@ const mockProduct2: Product = {
     value: 1,
   },
 };
+const mockEmptyEntry: OrderEntry = {};
 const mockEntry1: OrderEntry = {
   product: mockProduct1,
   quantity: 1,
@@ -114,6 +115,13 @@ describe('QuickOrderService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('should clear timeout subscriptions on service destroy', () => {
+    spyOn(service, 'clearDeletedEntries').and.callThrough();
+    service.ngOnDestroy();
+
+    expect(service.clearDeletedEntries).toHaveBeenCalled();
+  });
+
   it('should return an empty list of entries', (done) => {
     service
       .getEntries()
@@ -167,9 +175,9 @@ describe('QuickOrderService', () => {
       });
   });
 
-  it('should remove entry', (done) => {
-    service.loadEntries(mockEntries);
-    service.removeEntry(0);
+  it('should delete entry', (done) => {
+    service.loadEntries([mockEntry1, mockEntry2]);
+    service.softDeleteEntry(0);
 
     service
       .getEntries()
@@ -221,13 +229,114 @@ describe('QuickOrderService', () => {
       });
   });
 
-  it('should set added product', () => {
-    service.setProductAdded(mockProduct1Code);
+  it('should add product to the quick order list by increasing current existing product quantity', (done) => {
+    service.addProduct(mockProduct1);
+    service.addProduct(mockProduct1);
+
     service
-      .getProductAdded()
+      .getEntries()
+      .pipe(take(1))
+      .subscribe((entries) => {
+        expect(entries).toEqual([
+          {
+            product: mockProduct1,
+            quantity: 2,
+            basePrice: {
+              value: 1,
+            },
+            totalPrice: {
+              value: 1,
+            },
+          },
+        ]);
+        done();
+      });
+  });
+
+  it('should set added product', (done) => {
+    service.setProductAdded(mockProduct1Code);
+
+    service.getProductAdded().subscribe((result) => {
+      expect(result).toEqual(mockProduct1Code);
+    });
+    done();
+  });
+
+  it('should add deleted entry and after 5s delete it', (done) => {
+    service.loadEntries(mockEntries);
+    service.softDeleteEntry(0);
+
+    service
+      .getSoftDeletedEntries()
+      .pipe(
+        tap((softDeletedEntries) => {
+          expect(softDeletedEntries).toEqual({ mockCode1: mockEntry1 });
+        }),
+        delay(5000),
+        switchMap(() => service.getSoftDeletedEntries())
+      )
       .subscribe((result) => {
-        expect(result).toEqual(mockProduct1Code);
-      })
-      .unsubscribe();
+        expect(result).toEqual({});
+      });
+    done();
+  });
+
+  it('should not add deleted entry', (done) => {
+    service.loadEntries([mockEmptyEntry]);
+    service.softDeleteEntry(0);
+
+    service
+      .getSoftDeletedEntries()
+      .pipe(take(1))
+      .subscribe((result) => {
+        expect(result).toEqual({});
+        done();
+      });
+  });
+
+  it('should return deleted entries', (done) => {
+    service.loadEntries([mockEntry1]);
+    service.softDeleteEntry(0);
+
+    service
+      .getSoftDeletedEntries()
+      .pipe(take(1))
+      .subscribe((result) => {
+        expect(result).toEqual({ mockCode1: mockEntry1 });
+        done();
+      });
+  });
+
+  it('should undo deleted entry', (done) => {
+    service.loadEntries([mockEntry1]);
+    service.softDeleteEntry(0);
+
+    service
+      .getSoftDeletedEntries()
+      .pipe(
+        observeOn(queueScheduler),
+        take(1),
+        tap((softDeletedEntries) => {
+          expect(softDeletedEntries).toEqual({ mockCode1: mockEntry1 });
+        }),
+        tap(() => service.restoreSoftDeletedEntry(mockProduct1Code))
+      )
+      .subscribe((result) => {
+        expect(result).toEqual({});
+        done();
+      });
+  });
+
+  it('should clear deleted entry', (done) => {
+    service.loadEntries([mockEntry1]);
+    service.softDeleteEntry(0);
+    service.hardDeleteEntry(mockProduct1Code);
+    service
+      .getSoftDeletedEntries()
+      .pipe(take(1))
+      .subscribe((result) => {
+        expect(result).toEqual({});
+        done();
+      });
   });
 });
