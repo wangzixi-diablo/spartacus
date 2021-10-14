@@ -16,10 +16,12 @@ new LoadtestRunner().run(testConfig).then((results) => {
     '[TEST SETUP] Url generator': testConfig.requestGenerator.description,
     '[TEST SETUP] Total requests': testConfig.totalRequests,
     '[TEST SETUP] Concurrency limit': testConfig.concurrencyLimit,
-
-    // Optimizations are not set in the test. Please inspect your app's setup and ensure the values below are correct:
-    '[APP SETUP] Cache OCC': true,
-    '[APP SETUP] Static Basesite Config': true,
+    /*
+    You might want to add below more information about the custom app's setup.
+    NOTE: if any value is hardcoded, ensure it's actual!
+    e.g. '[APP SETUP] Static Basesite Config': true,
+    e.g. '[APP SETUP] OCC Cached': false,
+    */
 
     // == RESULTS ==
     'Avg response time': results.avgResponseTime,
