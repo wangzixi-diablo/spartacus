@@ -22,13 +22,6 @@ export function pdpLoadtest() {
       '[TEST SETUP] Urls': `${MAX_DIFFERENT_PDP_URLS} different PDP`,
       '[TEST SETUP] Total requests': testConfig.totalRequests,
       '[TEST SETUP] Concurrency limit': testConfig.concurrencyLimit,
-      /*
-      For reference, you might want to add below more information about the custom setup of app or ssr.
-      NOTE: if any value is hardcoded, ensure it's actual!
-      e.g. '[APP SETUP] Static Basesite Config': true,
-      e.g. '[APP SETUP] OCC Cached': false,
-      e.g. '[APP SETUP] SSR Reuse Current Rendering': true,
-      */
 
       // == RESULTS ==
       'Avg response time': results.avgResponseTime,
