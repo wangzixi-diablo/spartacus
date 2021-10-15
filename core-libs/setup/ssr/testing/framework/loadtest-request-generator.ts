@@ -4,7 +4,6 @@ import { BaseSites } from '../sample-data/base-sites';
  * Generates requests
  */
 export abstract class LoadtestRequestGenerator {
-  private testNumber = Date.now(); // used to group all requests from a single test run
   protected readonly baseSite: string;
 
   constructor({ baseSite }: { baseSite?: string } = {}) {
@@ -27,7 +26,7 @@ export abstract class LoadtestRequestGenerator {
   generateRequest(_params: any, options: any, client: any, callback: any) {
     const url = this.generateUrl();
 
-    const path = `/${this.baseSite}/${url}?testId=${this.testNumber}`;
+    const path = `/${this.baseSite}/${url}`;
 
     options.path = path;
     options.pathname = path;
