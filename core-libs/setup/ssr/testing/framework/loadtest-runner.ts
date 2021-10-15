@@ -38,6 +38,8 @@ export class LoadtestRunner {
           },
         },
         (error: any, _finalResult: any) => {
+          // workaround: wait with returning the final result until the last `statusCallback` executes:
+
           setTimeout(() => {
             const testResults = new LoadtestResult(responses);
             this.logEnd(error, testResults);

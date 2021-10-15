@@ -1,7 +1,7 @@
 import { LoadtestRequestGenerator } from '../framework/loadtest-request-generator';
 import { productCodes } from '../sample-data/product-codes';
 
-class Range {
+class RangeLoop {
   protected readonly max: number;
   protected current = 0;
 
@@ -23,10 +23,10 @@ export class PdpRequestGenerator extends LoadtestRequestGenerator {
     super({ baseSite });
   }
 
-  range = new Range({ max: this.maxDifferentUrls });
+  rangeLoop = new RangeLoop({ max: this.maxDifferentUrls });
 
   protected generateUrl = () => {
-    const urlId = this.range.getNext();
+    const urlId = this.rangeLoop.getNext();
     const productCode = productCodes?.[this.baseSite]?.[urlId];
     return `p/${productCode}`;
   };

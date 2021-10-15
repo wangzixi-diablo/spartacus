@@ -1,7 +1,7 @@
 import { CsvFile } from './framework/csv-file';
 import { DEFAULT_CONFIG, LoadtestConfig } from './framework/loadtest-config';
 import { LoadtestRunner } from './framework/loadtest-runner';
-import { PdpRequestGenerator } from './url-generators/pdp-request-generator';
+import { PdpRequestGenerator } from './request-generators/pdp-request-generator';
 
 const testConfig: LoadtestConfig = {
   ...DEFAULT_CONFIG,
