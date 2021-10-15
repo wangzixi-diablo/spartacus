@@ -18,12 +18,17 @@ export interface LoadtestConfig {
   concurrencyLimit: number;
 
   /**
-   * Generator of the requests.
+   * A list of URL paths to make requests to.
    */
-  requestGenerator: LoadtestRequestGenerator;
+  urls: string[];
 
   /**
-   * Handler of http responses. E.g. for console logging.
+   * Custom generator of the requests. Takes precedence over the list of URLs in the `urls` config property.
+   */
+  requestGenerator?: LoadtestRequestGenerator;
+
+  /**
+   * Custom handler of http responses. E.g. for console logging.
    */
   responseHandler?: LoadtestResponseHandler;
 }

@@ -35,25 +35,13 @@ export interface LoadtestSuccessResponse {
 }
 
 /**
- * Handler of the http responses. E.g. used for logging.
+ * Handler of the http responses.
  */
-export class LoadtestResponseHandler {
+export abstract class LoadtestResponseHandler {
   protected responsesCount = 0;
 
   /**
    * Function used by 'loadtest' tool to handle responses.
    */
-  handleResponse(error: any, result: LoadtestSuccessResponse) {
-    this.logResponse({ error, result });
-  }
-
-  protected logResponse({ error, result }: LoadtestResponse) {
-    this.responsesCount++;
-    if (error) {
-      console.warn(this.responsesCount, result?.path);
-      console.warn('ERROR:', error);
-    } else {
-      console.log(this.responsesCount, result?.path);
-    }
-  }
+  abstract handleResponse(error: any, result: LoadtestSuccessResponse): void;
 }

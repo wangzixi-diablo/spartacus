@@ -1,8 +1,9 @@
 import loadtest from 'loadtest';
+import { DefaultRequestGenerator } from './default-request-generator';
+import { DefaultResponseHandler } from './default-response-handler';
 import { LoadtestConfig } from './loadtest-config';
 import {
   LoadtestResponse,
-  LoadtestResponseHandler,
   LoadtestSuccessResponse,
 } from './loadtest-response-handler';
 import { LoadtestResult } from './loadtest-result';
@@ -23,8 +24,10 @@ export class LoadtestRunner {
       concurrencyLimit,
       requestGenerator,
       responseHandler,
+      urls,
     } = testConfig;
-    responseHandler = responseHandler ?? new LoadtestResponseHandler();
+    responseHandler = responseHandler ?? new DefaultResponseHandler();
+    requestGenerator = requestGenerator ?? new DefaultRequestGenerator(urls);
     this.logStart(testConfig);
 
     return new Promise((resolve, reject) => {
@@ -35,7 +38,8 @@ export class LoadtestRunner {
           maxRequests: totalRequests,
           concurrency: concurrencyLimit,
 
-          requestGenerator: requestGenerator.generateRequest.bind(
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          requestGenerator: requestGenerator!.generateRequest.bind(
             requestGenerator
           ),
 
@@ -69,13 +73,11 @@ export class LoadtestRunner {
     host,
     totalRequests,
     concurrencyLimit,
-    requestGenerator,
   }: LoadtestConfig) {
     console.log('Test started with the config:', {
       host,
       totalRequests,
       concurrencyLimit,
-      requestGenerator: requestGenerator.description,
     });
   }
 

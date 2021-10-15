@@ -1,14 +1,8 @@
-import { BaseSites } from '../sample-data/base-sites';
-
 /**
- * Generates requests
+ * Generates requests for the `loadtest` tool.
  */
 export abstract class LoadtestRequestGenerator {
   protected readonly baseSite: string;
-
-  constructor({ baseSite }: { baseSite?: string } = {}) {
-    this.baseSite = baseSite ?? BaseSites.ELECTRONICS_SPA;
-  }
 
   /**
    * Template method to be implemented by child class to generate specific URL.
@@ -16,17 +10,10 @@ export abstract class LoadtestRequestGenerator {
   protected abstract generateUrl(): string;
 
   /**
-   * Description of the generator
-   */
-  abstract readonly description: string;
-
-  /**
-   * It's used by `loadtest` tool to generate a request.
+   * Function used by `loadtest` tool to generate a request.
    */
   generateRequest(_params: any, options: any, client: any, callback: any) {
-    const url = this.generateUrl();
-
-    const path = `/${this.baseSite}/${url}`;
+    const path = this.generateUrl();
 
     options.path = path;
     options.pathname = path;
