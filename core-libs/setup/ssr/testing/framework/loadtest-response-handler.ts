@@ -1,10 +1,13 @@
+/**
+ * Data related to the http response
+ */
 export interface LoadtestResponse {
   error: any;
   result: LoadtestSuccessResponse;
 }
 
 /**
- * Data related to the http response.
+ * Data related to the http success response.
  */
 export interface LoadtestSuccessResponse {
   /**
@@ -32,7 +35,7 @@ export interface LoadtestSuccessResponse {
 }
 
 /**
- * Interceptor of the http responses.
+ * Handler of the http responses. E.g. used for logging.
  */
 export class LoadtestResponseHandler {
   protected responsesCount = 0;
@@ -40,9 +43,9 @@ export class LoadtestResponseHandler {
   /**
    * Function used by 'loadtest' tool to handle responses.
    */
-  handleResponse = (error: any, result: LoadtestSuccessResponse) => {
+  handleResponse(error: any, result: LoadtestSuccessResponse) {
     this.logResponse({ error, result });
-  };
+  }
 
   protected logResponse({ error, result }: LoadtestResponse) {
     this.responsesCount++;

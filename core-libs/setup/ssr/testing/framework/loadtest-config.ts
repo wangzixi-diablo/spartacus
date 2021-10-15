@@ -23,7 +23,7 @@ export interface LoadtestConfig {
   requestGenerator: LoadtestRequestGenerator;
 
   /**
-   * Handler of http responses.
+   * Handler of http responses. E.g. for console logging.
    */
   responseHandler?: LoadtestResponseHandler;
 }

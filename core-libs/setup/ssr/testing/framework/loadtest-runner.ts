@@ -7,7 +7,15 @@ import {
 } from './loadtest-response-handler';
 import { LoadtestResult } from './loadtest-result';
 
+/**
+ * Wrapper class for the 'loadtest' tool.
+ */
 export class LoadtestRunner {
+  /**
+   * Runs the test using the `loadtest` tool, parametrized with the given config.
+   *
+   * Returns a Promise which resolves with test results.
+   */
   run(testConfig: LoadtestConfig): Promise<LoadtestResult> {
     let {
       host,
@@ -39,7 +47,6 @@ export class LoadtestRunner {
         },
         (error: any, _finalResult: any) => {
           // workaround: wait with returning the final result until the last `statusCallback` executes:
-
           setTimeout(() => {
             const testResults = new LoadtestResult(responses);
             this.logEnd(error, testResults);
@@ -55,6 +62,9 @@ export class LoadtestRunner {
     });
   }
 
+  /**
+   * Logs the start of the test.
+   */
   protected logStart({
     host,
     totalRequests,
@@ -69,6 +79,9 @@ export class LoadtestRunner {
     });
   }
 
+  /**
+   * Logs the end of the test
+   */
   protected logEnd(error: any, results: LoadtestResult) {
     if (error) {
       console.error('Test got an error: %s', error);
@@ -76,7 +89,7 @@ export class LoadtestRunner {
       console.log('Test run successfully!');
     }
 
-    console.log('CSR fallbacks count:', results.csrFallbackResponsesCount);
+    console.log('CSR fallbacks count:', results.getCacheNoStoreCount);
     console.log('Response times in ms:', {
       avg: results.avgResponseTime,
       max: results.maxResponseTime,

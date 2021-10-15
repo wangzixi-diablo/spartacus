@@ -29,22 +29,30 @@ export class LoadtestResult {
 
   /**
    * Returns the number of responses that had a header 'cache-control' set to 'no-store'.
-   * This should happen only for CSR fallback responses (e.g in case of timeout).
    */
-  get csrFallbackResponsesCount() {
+  get getCacheNoStoreCount() {
     return this.responses.filter(
       ({ result }) => result?.headers?.['cache-control'] === 'no-store'
     ).length;
   }
 
+  /**
+   * Returns the times of the responses
+   */
   get responseTimes(): number[] {
     return this.responses.map(({ result }) => result?.requestElapsed);
   }
 
+  /**
+   * Returns the maximum response time
+   */
   get maxResponseTime(): number {
     return Math.round(Math.max(...this.responseTimes));
   }
 
+  /**
+   * Returns the average response time
+   */
   get avgResponseTime(): number {
     const responseTimes = this.responseTimes;
     return Math.round(
@@ -52,6 +60,9 @@ export class LoadtestResult {
     );
   }
 
+  /**
+   * Returns the minimum response time
+   */
   get minResponseTime(): number {
     return Math.round(Math.min(...this.responseTimes));
   }
