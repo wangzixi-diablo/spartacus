@@ -8,10 +8,12 @@ export type CsvCellData = number | string | boolean;
  * CAUTION: assumes the same order of object's keys in each passed data object.
  */
 export class CsvFile {
+  protected readonly DEFAULT_BASE_PATH = './ssr/testing/.reports/';
   protected readonly filename;
 
-  constructor({ filename }: { filename: string }) {
-    this.filename = filename;
+  constructor({ filename, basePath }: { filename: string; basePath?: string }) {
+    basePath ??= this.DEFAULT_BASE_PATH;
+    this.filename = `${basePath}${filename}`;
   }
 
   appendRow(data: Record<string, CsvCellData>) {
