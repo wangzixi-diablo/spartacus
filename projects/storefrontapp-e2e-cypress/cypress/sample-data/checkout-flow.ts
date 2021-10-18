@@ -85,8 +85,8 @@ export const cart: SampleCartProduct = {
 };
 
 export const cartWithCheapProduct: SampleCartProduct = {
-  //estimatedShipping: '$11.99',
-  estimatedShipping: '$9.99',
+  estimatedShipping: '$11.99',
+  //estimatedShipping: '$9.99',
   total: '$8.20',
   totalAndShipping: '$20.19',
 };

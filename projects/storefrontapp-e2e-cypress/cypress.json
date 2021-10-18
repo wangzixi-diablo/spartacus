@@ -16,7 +16,7 @@
     "OCC_PREFIX": "/occ/v2",
     "OCC_PREFIX_USER_ENDPOINT": "users",
     "OCC_PREFIX_ORDER_ENDPOINT": "orders",
-    "ACCESS_TOKEN_VAL": "70000",
-    "REFRESH_TOKEN_VAL": "130000"
+    "ACCESS_TOKEN_VAL": "40000",
+    "REFRESH_TOKEN_VAL": "55000"
   }
 }

@@ -78,6 +78,12 @@ context('Checkout flow', () => {
       checkout.placeOrderWithCheapProduct(user);
       checkout.verifyOrderConfirmationPageWithCheapProduct(user);
 
+      // NOTES: Regions Error.  
+      //"errors" : [ {
+      //  "message" : "RegionModel with country, isocode 'US, US-undefined' not found!",
+      //  "type" : "UnknownIdentifierError"
+
+
     });
 
 
@@ -86,6 +92,7 @@ context('Checkout flow', () => {
       
       loginAndLoadCart(user);
       // TODO
+      // Probably Regions Error. 
 
     });
 
@@ -94,6 +101,7 @@ context('Checkout flow', () => {
       
       loginAndLoadCart(user);
       // TODO
+      // Probably Regions Error
 
     });
 
@@ -102,11 +110,10 @@ context('Checkout flow', () => {
       
       loginAndLoadCart(user);
       // TODO
+      // Probably Regions Error
 
     });
 
-
-    
     function loginAndLoadCart(sampleUser: SampleUser){
       checkout.visitHomePage();
 

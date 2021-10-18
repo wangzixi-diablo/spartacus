@@ -178,7 +178,8 @@ export function verifyDeliveryMethod(sessionTimeout: boolean = false) {
   }
   cy.get('.cx-checkout-btns button.btn-primary').click();
 
-  cy.wait(`@${paymentPage}`).its('response.statusCode').should('eq', 200);
+  //cy.wait(`@${paymentPage}`).its('response.statusCode').should('eq', 200);
+  cy.wait(`@${paymentPage}`).its('response.statusCode').should('eq', paymentPageHttpResponseCode);
 }
 
 export function fillPaymentForm(
@@ -345,7 +346,8 @@ export function fillAddressFormWithCheapProduct(
   );
   fillShippingAddress(shippingAddressData, true, sessionTimeout);
   if(!sessionTimeout){
-    cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+    //cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+    cy.wait(`@${deliveryPage}`).its('response.statusCode').should('eq', 200);
   }
 }
 
@@ -374,7 +376,8 @@ export function selectDefaultAddress(
   if(!sessionTimeout){
     //cy.get('cx-place-order button.btn-primary').click();
     cy.get('.cx-checkout-btns button.btn-primary').click();
-    cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+    //cy.wait(`@${deliveryPage}`).its('status').should('eq', 200);
+    cy.wait(`@${deliveryPage}`).its('response.statusCode').should('eq', 200);
   }
 }
 

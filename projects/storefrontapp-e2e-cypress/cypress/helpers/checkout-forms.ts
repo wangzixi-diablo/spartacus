@@ -154,7 +154,7 @@ export function fillPaymentDetails(
         cy.wait(timeoutVal)
        }
       cy.wait(3000);
-      cy.get('button.btn.btn-block.btn-primary').contains('Continue').click();
+      cy.get('button.btn.btn-block.btn-primary').contains('Continue').click({ force: true });
     }
   });
 }
