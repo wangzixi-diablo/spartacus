@@ -9,3 +9,5 @@
 005. [SAP 电商云 Spartacus UI 产品明细页面路由路径的自定义配置](https://jerry.blog.csdn.net/article/details/120864528)
 
 006. [SAP 电商云 Spartacus UI product 明细页面的路由配置](https://jerry.blog.csdn.net/article/details/120866945)
+
+007. [SAP 电商云 Spartacus UI 产品明细页面路由确定后，加载的是 page template](https://jerry.blog.csdn.net/article/details/120868858)

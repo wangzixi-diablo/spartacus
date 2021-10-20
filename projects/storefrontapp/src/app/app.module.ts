@@ -24,6 +24,7 @@ import { AppRoutingModule, StorefrontComponent } from '@spartacus/storefront';
 import { environment } from '../environments/environment';
 import { TestOutletModule } from '../test-outlets/test-outlet.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
+import { Router } from '@angular/router';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeJa);
@@ -85,4 +86,10 @@ if (!environment.production) {
   ],
   bootstrap: [StorefrontComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private router: Router){
+    this.router.events.subscribe((data) => {
+      console.log('Jerry route event: ', data);
+    });
+  }
+}

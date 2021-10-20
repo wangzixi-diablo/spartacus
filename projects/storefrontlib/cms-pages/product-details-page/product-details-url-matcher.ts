@@ -12,6 +12,7 @@ export function getProductDetailsUrlMatcherFactory(
   defaultMatcherFactory: UrlMatcherFactory
 ): UrlMatcherFactory {
   const factory = (route: Route) => {
+    console.log('Jerry product detail url matcher for route: ', route);
     const defaultMatcher = defaultMatcherFactory(route);
     const suffixPDPMatcher = getSuffixUrlMatcher({
       marker: 'p',
