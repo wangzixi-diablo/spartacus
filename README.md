@@ -2,4 +2,10 @@
 
 002. [如何找到 SAP 电商云 Spartacus UI 导航 navigation 的驱动器 - NavigationEntryItemEffects](https://jerry.blog.csdn.net/article/details/120862895)
 
-003. 
+003. [为什么在大型 Angular 应用里我们需要使用 ngrx](https://jerry.blog.csdn.net/article/details/120863169)
+
+004. [如何编写第一个 ngrx Effect 类](https://jerry.blog.csdn.net/article/details/120863500)
+
+005. [SAP 电商云 Spartacus UI 产品明细页面路由路径的自定义配置](https://jerry.blog.csdn.net/article/details/120864528)
+
+006. 

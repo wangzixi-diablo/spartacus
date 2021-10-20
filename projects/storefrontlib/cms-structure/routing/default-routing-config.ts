@@ -38,7 +38,7 @@ export const defaultStorefrontRoutesConfig: RoutesConfig = {
 
   // pdp routes
   product: {
-    paths: ['product/:productCode/:name'],
+    paths: ['jerryproduct/:productCode/:name'],
     paramsMapping: { productCode: 'code' },
   },
 

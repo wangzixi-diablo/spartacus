@@ -17,7 +17,7 @@ import {
   I18nConfig,
   OccConfig,
   provideConfig,
-  RoutingConfig,
+  //RoutingConfig,
   TestConfigModule,
 } from '@spartacus/core';
 import { AppRoutingModule, StorefrontComponent } from '@spartacus/storefront';
@@ -57,6 +57,7 @@ if (!environment.production) {
         },
       },
     }),
+    /*
     provideConfig(<RoutingConfig>{
       // custom routing configuration for e2e testing
       routing: {
@@ -67,7 +68,7 @@ if (!environment.production) {
           },
         },
       },
-    }),
+    }),*/
     provideConfig(<I18nConfig>{
       // we bring in static translations to be up and running soon right away
       i18n: {

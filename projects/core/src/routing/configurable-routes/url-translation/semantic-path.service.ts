@@ -57,7 +57,7 @@ export class SemanticPathService {
     if (this.shouldOutputAbsolute(commands)) {
       result.unshift('/');
     }
-
+    console.log('Jerry SemanticPathService for command:',commands, ' result: ', result);
     return result;
   }
 
