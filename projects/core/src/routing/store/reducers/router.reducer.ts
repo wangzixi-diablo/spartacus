@@ -42,6 +42,10 @@ export function reducer(
   state: RouterState = initialState,
   action: any
 ): RouterState {
+  console.log('Jerry in router.reducer.ts file, action.type: ', action.type, ' data: ', action);
+  if( action.type === '@ngrx/router-store/navigation'){
+    console.log('hit me');
+  }
   switch (action.type) {
     case fromNgrxRouter.ROUTER_NAVIGATION: {
       return {
@@ -104,6 +108,7 @@ export class CustomSerializer
   implements fromNgrxRouter.RouterStateSerializer<ActivatedRouterStateSnapshot>
 {
   serialize(routerState: RouterStateSnapshot): ActivatedRouterStateSnapshot {
+    console.log('Jerry in router.reducer.ts, serialize: ', routerState);
     let state: CmsActivatedRouteSnapshot =
       routerState.root as CmsActivatedRouteSnapshot;
     let cmsRequired = false;

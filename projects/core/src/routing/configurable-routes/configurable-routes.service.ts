@@ -60,6 +60,7 @@ export class ConfigurableRoutesService {
    * @param route Angular `Route` object
    */
   protected configureRoute(route: Route): Route {
+    console.log('Jerry configureRoute: ', route);
     const routeName = this.getRouteName(route);
     if (routeName) {
       const routeConfig = this.routingConfigService.getRouteConfig(routeName);

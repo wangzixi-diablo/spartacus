@@ -21,6 +21,7 @@ export class RoutingRenderStrategy extends LaunchRenderStrategy {
   }
 
   hasMatch(config: LaunchRoute) {
+    console.log('Jerry hasMatch? ', config);
     return Boolean(config.cxRoute);
   }
 }
