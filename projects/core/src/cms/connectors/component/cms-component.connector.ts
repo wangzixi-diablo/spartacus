@@ -33,6 +33,8 @@ export class CmsComponentConnector {
   }
 
   getList(ids: string[], pageContext: PageContext): Observable<CmsComponent[]> {
+    console.log('Jerry cms component connector get List: ', ids,
+    ' context: ', pageContext);
     return this.cmsStructureConfigService.getComponentsFromConfig(ids).pipe(
       switchMap((configuredComponents) => {
         // check if we have some components that are not loaded from configuration

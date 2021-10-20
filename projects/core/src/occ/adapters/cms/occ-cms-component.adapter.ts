@@ -99,6 +99,7 @@ export class OccCmsComponentAdapter implements CmsComponentAdapter {
     let requestParams = {};
     switch (pageContext.type) {
       case PageType.PRODUCT_PAGE: {
+        console.log('Jerry getContextParams: ', pageContext);
         requestParams = { productCode: pageContext.id };
         break;
       }
