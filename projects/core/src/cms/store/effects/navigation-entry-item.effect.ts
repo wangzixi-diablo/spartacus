@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { catchError, filter, map, mergeMap, take } from 'rxjs/operators';
+import { catchError, filter, map, mergeMap, take, tap } from 'rxjs/operators';
 import { RoutingService } from '../../../routing/index';
 import { normalizeHttpError } from '../../../util/normalize-http-error';
 import { isNotUndefined } from '../../../util/type-guards';
@@ -15,6 +15,7 @@ export class NavigationEntryItemEffects {
     | CmsActions.LoadCmsNavigationItemsSuccess
     | CmsActions.LoadCmsNavigationItemsFail
   > = this.actions$.pipe(
+    tap((data) => console.log('Jerry in LoadNavigationItems$', data)),
     ofType(CmsActions.LOAD_CMS_NAVIGATION_ITEMS),
     map((action: CmsActions.LoadCmsNavigationItems) => action.payload),
     map((payload) => {
