@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import localeDe from '@angular/common/locales/de';
 import localeJa from '@angular/common/locales/ja';
 import localeZh from '@angular/common/locales/zh';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import {
   BrowserModule,
   BrowserTransferStateModule,
@@ -24,7 +24,8 @@ import { AppRoutingModule, StorefrontComponent } from '@spartacus/storefront';
 import { environment } from '../environments/environment';
 import { TestOutletModule } from '../test-outlets/test-outlet.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { JerryComponent } from './jerry.component';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeJa);
@@ -48,6 +49,12 @@ if (!environment.production) {
     TestConfigModule.forRoot({ cookie: 'cxConfigE2E' }), // Injects config dynamically from e2e tests. Should be imported after other config modules.
 
     ...devImports,
+    RouterModule.forChild([
+      {
+        path: 'jerry',
+        component: JerryComponent
+      },
+    ])
   ],
   providers: [
     provideConfig(<OccConfig>{
@@ -87,9 +94,12 @@ if (!environment.production) {
   bootstrap: [StorefrontComponent],
 })
 export class AppModule {
-  constructor(private router: Router){
+  constructor(private router: Router,protected injector: Injector){
     this.router.events.subscribe((data) => {
       console.log('Jerry route event: ', data);
     });
+
+    const routeConfig: Router = this.injector.get(Router);
+    console.log('Jerry Route config: ', routeConfig);
   }
 }
