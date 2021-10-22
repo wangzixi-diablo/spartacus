@@ -43,6 +43,8 @@ export class UrlMatcherService {
       route: Route
     ): UrlMatchResult | null {
       for (let i = 0; i < matchers.length; i++) {
+        console.log('Jerry matcher is called for segments: ', segments, 
+        'route: ', route);
         const result = matchers[i](segments, segmentGroup, route);
         if (result) {
           return result;
