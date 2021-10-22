@@ -117,6 +117,9 @@ export class UrlMatcherService {
         }
       }
 
+      console.log('Jerry in url-matcher.service.ts, segment: ', segments, 'parameter: ',
+      posParams, ' parts.length ', parts);
+
       return { consumed: segments.slice(0, parts.length), posParams };
     };
     if (isDevMode()) {

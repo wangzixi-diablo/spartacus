@@ -149,6 +149,8 @@ export class CustomSerializer
     // If `semanticRoute` couldn't be already recognized using `data.cxRoute` property
     // let's lookup the routing configuration to find the semantic route that has exactly the same configured path as the current URL.
     // This will work only for simple URLs without any dynamic routing parameters.
+
+    console.log('!!!!!!!!!!!!!!!');
     semanticRoute = semanticRoute || this.lookupSemanticRoute(urlString);
 
     const { params } = state;

@@ -22,6 +22,9 @@ export function getSuffixUrlMatcher({
   const matcher = function suffixUrlMatcher(
     segments: UrlSegment[]
   ): UrlMatchResult | null {
+
+    console.log('Jerry in suffix-url-matcher.ts, segments: ', segments,
+    ' marker: ', marker, ' paramName: ', paramName);
     const markerIndex = findLastIndex(segments, ({ path }) => path === marker);
     const isMarkerLastSegment = markerIndex === segments.length - 1;
 
