@@ -12,6 +12,7 @@ export class LoadCmsPageData extends StateUtils.EntityLoadAction {
   readonly type = LOAD_CMS_PAGE_DATA;
   constructor(public payload: PageContext) {
     super(payload.type, payload.id);
+    console.log('Jerry in LoadCmsPageData constructor:', payload);
   }
 }
 

@@ -22,6 +22,7 @@ export class CmsPageConnector {
    * configuration (see `CmsStructureConfigService`).
    */
   get(pageContext: PageContext): Observable<CmsStructureModel> {
+    console.log('Jerry in cms-page.connector.ts get:', pageContext);
     return this.cmsStructureConfigService
       .shouldIgnoreBackend(pageContext.id)
       .pipe(

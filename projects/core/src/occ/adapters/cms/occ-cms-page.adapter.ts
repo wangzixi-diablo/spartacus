@@ -83,6 +83,7 @@ export class OccCmsPageAdapter implements CmsPageAdapter {
       httpParams.code = context.id;
     }
 
+    console.log('Jerry httpParams for OCC CMS Page: ', httpParams);
     return httpParams;
   }
 }

@@ -15,3 +15,9 @@
 008. [SAP 电商云 Spartacus UI 的 slot，position 和 Component](https://jerry.blog.csdn.net/article/details/120908066)
 
 009. [为什么 SAP 电商云 Spartacus 产品明细页面的自定义 matcher 会重复被调用](https://jerry.blog.csdn.net/article/details/120912633)
+
+010. [SAP 电商云 Spartacus 产品明细页面的 OCC API 是如何被触发的](https://jerry.blog.csdn.net/article/details/120914276)
+
+011. [SAP 电商云 Spartacus 产品明细页面的 pageContext 如何获取的](https://jerry.blog.csdn.net/article/details/120914693)
+
+012. 

@@ -10,6 +10,7 @@ import { PageLayoutService } from './page-layout.service';
 })
 export class PageLayoutComponent {
   @Input() set section(value: string) {
+    console.log("Jerry PageLayoutComponent is assigned section: ", value);
     this.section$.next(value);
   }
   readonly section$: BehaviorSubject<string> = new BehaviorSubject(undefined);
@@ -32,5 +33,9 @@ export class PageLayoutComponent {
     distinctUntilChanged()
   );
 
-  constructor(protected pageLayoutService: PageLayoutService) {}
+  constructor(protected pageLayoutService: PageLayoutService) {
+    console.log('Jerry a new PageLayoutComponent is created!', this);
+
+
+  }
 }
