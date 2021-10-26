@@ -48,11 +48,13 @@ export function reducer(
   }
   switch (action.type) {
     case fromNgrxRouter.ROUTER_NAVIGATION: {
-      return {
+      const next = {
         ...state,
         nextState: action.payload.routerState,
         navigationId: action.payload.event.id,
       };
+      console.log('Jerry ROUTER_NAVIGATION next state:', next);
+      return next ;
     }
 
     case fromNgrxRouter.ROUTER_ERROR:
@@ -73,7 +75,7 @@ export function reducer(
     }
 
     case fromNgrxRouter.ROUTER_NAVIGATED: {
-      return {
+      const next = {
         state: {
           ...action.payload.routerState,
           context:
@@ -84,6 +86,8 @@ export function reducer(
         navigationId: action.payload.event.id,
         nextState: undefined,
       };
+      console.log('Jerry fromNgrxRouter.ROUTER_NAVIGATED,result: ', next);
+      return next;
     }
 
     default: {

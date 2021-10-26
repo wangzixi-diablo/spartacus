@@ -89,6 +89,7 @@ export class PageLayoutService {
       section,
       breakpoint
     );
+    console.log('Jerry resolveSlots for page:', page.template, ' section: ', section, ' breakpoint: ', breakpoint, ' config: ', config);
     if (config && config.slots) {
       const pageSlots = Object.keys(page.slots);
       return config.slots.filter((slot) => pageSlots.includes(slot));

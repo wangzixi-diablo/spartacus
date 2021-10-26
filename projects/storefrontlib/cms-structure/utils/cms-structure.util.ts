@@ -68,6 +68,8 @@ function buildLayoutConfig({
   breakpoint,
   section,
 }: CmsStructureOptions = {}): LayoutConfig {
+  console.log('Jerry buildLayoutConfig for template:', pageTemplate, ' slot position:', 
+  pageSlotPosition, ' breakpoint: ', breakpoint, ' section: ', section );
   const layoutConfig: LayoutConfig = {};
   if (pageTemplate && pageSlotPosition) {
     const pageTemplateSlots: any = {};

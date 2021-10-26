@@ -27,6 +27,7 @@ export class LoadCmsPageDataSuccess extends StateUtils.EntitySuccessAction {
   readonly type = LOAD_CMS_PAGE_DATA_SUCCESS;
   constructor(pageContext: PageContext, payload: Page) {
     super(pageContext.type, pageContext.id, payload);
+    console.log('Jerry CMS Page data load success. Context: ', pageContext, ' data: ', payload);
   }
 }
 

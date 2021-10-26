@@ -20,4 +20,6 @@
 
 011. [SAP 电商云 Spartacus 产品明细页面的 pageContext 如何获取的](https://jerry.blog.csdn.net/article/details/120914693)
 
-012. 
+012. [SAP 电商云 Spartacus UI 的双重 layout 配置层设计](https://jerry.blog.csdn.net/article/details/120970767)
+
+013. [SAP Spartacus PageLayoutComponent 如何知道自己应该显示哪些具体内容](https://jerry.blog.csdn.net/article/details/120970471)

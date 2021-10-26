@@ -10,7 +10,10 @@ export const getRouterFeatureState: MemoizedSelector<any, State> =
   createFeatureSelector<State>(ROUTING_FEATURE);
 
 export const getRouterState: MemoizedSelector<any, RouterState> =
-  createSelector(getRouterFeatureState, (state) => state.router);
+  createSelector(getRouterFeatureState, (state) => {
+    console.log('Jerry in getRouterState selector: ', state);
+    return state.router;
+  });
 
 export const getSemanticRoute: MemoizedSelector<any, string> = createSelector(
   getRouterState,

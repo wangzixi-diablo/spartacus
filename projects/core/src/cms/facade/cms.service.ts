@@ -43,6 +43,7 @@ export class CmsService {
    * Get current CMS page data
    */
   getCurrentPage(): Observable<Page> {
+    console.log('Jerry get current page');
     return this.routingService
       .getPageContext()
       .pipe(
@@ -69,6 +70,7 @@ export class CmsService {
     uid: string,
     pageContext?: PageContext
   ): Observable<T> {
+    console.log('Jerry get component data with uid: ', uid, ' pageContext: ', pageContext);
     const context = serializePageContext(pageContext, true);
     if (!this.components[uid]) {
       // create the component data structure, if it doesn't already exist
