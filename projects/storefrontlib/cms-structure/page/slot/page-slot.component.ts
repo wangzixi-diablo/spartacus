@@ -14,6 +14,7 @@ import {
   ContentSlotComponentData,
   ContentSlotData,
   DynamicAttributeService,
+  Config,
 } from '@spartacus/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
@@ -100,8 +101,11 @@ export class PageSlotComponent implements OnInit, OnDestroy {
     protected renderer: Renderer2,
     protected elementRef: ElementRef,
     protected cd: ChangeDetectorRef,
-    protected pageSlotService: PageSlotService
-  ) {}
+    protected pageSlotService: PageSlotService,
+    private _config: Config
+  ) {
+    console.log('Jerry injected config: ', this._config);
+  }
 
   ngOnInit() {
     this.subscription.add(

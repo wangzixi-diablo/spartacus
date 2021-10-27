@@ -2,7 +2,10 @@
   [cxOutlet]="position"
   [cxOutletContext]="{ components$: components$ }"
 >
+<ng-container *ngIf=false>
   <div>position: {{ position}}</div>
+</ng-container>
+  
   <ng-template
     *ngFor="let component of components"
     [cxOutlet]="component.flexType"
@@ -10,7 +13,9 @@
     [cxOutletDefer]="getComponentDeferOptions(component.flexType)"
     (loaded)="isLoaded($event)"
   >
+  <ng-container *ngIf=false>
     <div>component id: {{ component.uid }}</div>
+  </ng-container>
     <ng-container [cxComponentWrapper]="component"></ng-container>
   </ng-template>
 </ng-template>

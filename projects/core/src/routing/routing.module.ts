@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule, Injector } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import {
   RouterState,
@@ -22,9 +22,13 @@ export function initConfigurableRoutes(
   return result;
 }
 
+const temp = StoreModule.forFeature(ROUTING_FEATURE, reducerToken);
+
+console.log('Jerry StoreModule.forFeature(ROUTING_FEATURE, reducerToken): ', temp);
 @NgModule({
   imports: [
-    StoreModule.forFeature(ROUTING_FEATURE, reducerToken),
+    temp,
+    //StoreModule.forFeature(ROUTING_FEATURE, reducerToken),
     EffectsModule.forFeature(effects),
     StoreRouterConnectingModule.forRoot({
       routerState: RouterState.Minimal,
@@ -50,5 +54,10 @@ export class RoutingModule {
         },
       ],
     };
+  }
+
+  constructor(_injector: Injector){
+    const jerry = _injector.get(reducerToken);
+    console.log('Jerry token: ', jerry);
   }
 }

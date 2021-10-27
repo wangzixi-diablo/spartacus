@@ -31,7 +31,7 @@ import {
 export class BreakpointService {
   private _breakpoints: BREAKPOINT[];
 
-  breakpoint$: Observable<BREAKPOINT> = isPlatformBrowser(this.platform)
+breakpoint$: Observable<BREAKPOINT> = isPlatformBrowser(this.platform)
     ? this.winRef.resize$.pipe(
         map((event) => this.getBreakpoint((<Window>event.target).innerWidth)),
         distinctUntilChanged()

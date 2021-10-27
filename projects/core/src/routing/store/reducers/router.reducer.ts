@@ -33,6 +33,7 @@ export const initialState: RouterState = {
 };
 
 export function getReducers(): ActionReducerMap<State> {
+  console.log('Jerry in router.reducer.ts: ', reducer);
   return {
     router: reducer,
   };
