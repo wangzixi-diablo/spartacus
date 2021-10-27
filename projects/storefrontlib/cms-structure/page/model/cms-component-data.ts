@@ -5,3 +5,7 @@ export abstract class CmsComponentData<T extends CmsComponent> {
   uid: string;
   data$: Observable<T>;
 }
+
+export type ConfigUIDebug = {
+  switchOn: boolean;
+};

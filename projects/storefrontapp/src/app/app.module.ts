@@ -18,8 +18,7 @@ import {
   OccConfig,
   provideConfig,
   //RoutingConfig,
-  TestConfigModule,
-  provideDefaultConfigFactory,
+  TestConfigModule
 } from '@spartacus/core';
 import { AppRoutingModule, StorefrontComponent } from '@spartacus/storefront';
 import { environment } from '../environments/environment';
@@ -31,12 +30,6 @@ import { JerryComponent } from './jerry.component';
 registerLocaleData(localeDe);
 registerLocaleData(localeJa);
 registerLocaleData(localeZh);
-
-export function jerryConfigFactory(): any {
-  return {
-    configJerryUIDebug: true
-  };
-}
 
 const devImports = [];
 if (!environment.production) {
@@ -64,7 +57,6 @@ if (!environment.production) {
     ])
   ],
   providers: [
-    provideDefaultConfigFactory(jerryConfigFactory),
     provideConfig(<OccConfig>{
       backend: {
         occ: {

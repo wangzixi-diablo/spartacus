@@ -20,6 +20,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { IntersectionOptions } from '../../../layout/loading/intersection.model';
 import { PageSlotService } from './page-slot.service';
+import { ConfigUIDebug } from '../model/cms-component-data';
 
 /**
  * The `PageSlotComponent` is used to render the CMS page slot and it's components.
@@ -36,6 +37,7 @@ import { PageSlotService } from './page-slot.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageSlotComponent implements OnInit, OnDestroy {
+  public switchUIDebugOn: boolean;
   /**
    * The position represents the unique key for a page slot on a single page, but can
    * be reused cross pages.
@@ -105,6 +107,7 @@ export class PageSlotComponent implements OnInit, OnDestroy {
     private _config: Config
   ) {
     console.log('Jerry injected config: ', this._config);
+    this.switchUIDebugOn = (this._config as ConfigUIDebug).switchOn;
   }
 
   ngOnInit() {
