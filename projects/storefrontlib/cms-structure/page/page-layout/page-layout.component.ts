@@ -9,6 +9,7 @@ import { PageLayoutService } from './page-layout.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageLayoutComponent {
+  public switchUIDebugOn: boolean = true;
   @Input() set section(value: string) {
     console.log("Jerry PageLayoutComponent is assigned section: ", value);
     this.section$.next(value);
