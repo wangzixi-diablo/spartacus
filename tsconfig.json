@@ -353,6 +353,10 @@
       ],
       "@spartacus/storefront": [
         "projects/storefrontlib/public_api"
+      ],
+      "my-lib": [
+        "dist/my-lib/my-lib",
+        "dist/my-lib"
       ]
     }
   },
