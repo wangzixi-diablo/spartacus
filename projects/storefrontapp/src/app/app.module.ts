@@ -8,10 +8,13 @@ import {
   BrowserModule,
   BrowserTransferStateModule,
 } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { translationChunksConfig, translations } from '@spartacus/assets';
+import { I18nModule,UrlModule } from '@spartacus/core';
+
 import {
   FeaturesConfig,
   I18nConfig,
@@ -27,6 +30,7 @@ import { SpartacusModule } from './spartacus/spartacus.module';
 import { Router, RouterModule } from '@angular/router';
 import { JerryComponent } from './jerry.component';
 import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
+// import { Exams } from 'first';
 
 registerLocaleData(localeDe);
 registerLocaleData(localeJa);
@@ -41,6 +45,9 @@ if (!environment.production) {
   imports: [
     BrowserModule.withServerTransition({ appId: 'spartacus-app' }),
     BrowserTransferStateModule,
+    FormsModule,
+    I18nModule,
+    UrlModule,
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
@@ -57,6 +64,7 @@ if (!environment.production) {
       },
     ])
   ],
+  declarations: [JerryComponent],
   providers: [
     provideConfig(<OccConfig>{
       backend: {
@@ -107,5 +115,7 @@ export class AppModule {
 
     const routeConfig: Router = this.injector.get(Router);
     console.log('Jerry Route config: ', routeConfig);
+
+    // console.log('Jerry declare module: ', Exams);
   }
 }

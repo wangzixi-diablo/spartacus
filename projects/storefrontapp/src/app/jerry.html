@@ -1,3 +1,17 @@
 <h1>Jerry</h1>
 <input #inp (change)="foo = inp.value">
 <div>{{ foo }}</div>
+
+<div class="form-group search-wrapper">
+    <input
+      #queryInput
+      type="text"
+      [(ngModel)]="filter"
+      class="form-control"
+    />
+  </div>
+
+  <div class="asm-title">
+    {{ 'asm.mainTitle' | cxTranslate }}
+  </div>
+  
