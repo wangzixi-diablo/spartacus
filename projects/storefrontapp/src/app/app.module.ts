@@ -30,6 +30,7 @@ import { SpartacusModule } from './spartacus/spartacus.module';
 import { Router, RouterModule } from '@angular/router';
 import { JerryComponent } from './jerry.component';
 import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
+import { MyLibService } from 'feature-libs/my-lib/src/public-api';
 // import { Exams } from 'first';
 
 registerLocaleData(localeDe);
@@ -108,7 +109,7 @@ if (!environment.production) {
   bootstrap: [StorefrontComponent],
 })
 export class AppModule {
-  constructor(private router: Router,protected injector: Injector){
+  constructor(private router: Router,protected injector: Injector, private myLibService: MyLibService){
     this.router.events.subscribe((data) => {
       console.log('Jerry route event: ', data);
     });
@@ -116,6 +117,7 @@ export class AppModule {
     const routeConfig: Router = this.injector.get(Router);
     console.log('Jerry Route config: ', routeConfig);
 
+    this.myLibService.hello();
     // console.log('Jerry declare module: ', Exams);
   }
 }
