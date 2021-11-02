@@ -88,6 +88,7 @@ export class QuickOrderComponent implements OnInit, OnDestroy {
 
   get addToCartInformation$(): Observable<boolean> {
     return this.showAddToCartInformation$.asObservable();
+    // return of(true);
   }
 
   get softDeletedEntries$(): Observable<Record<string, OrderEntry>> {

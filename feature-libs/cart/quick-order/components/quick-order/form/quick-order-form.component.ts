@@ -163,7 +163,9 @@ export class QuickOrderFormComponent implements OnInit, OnDestroy {
   }
 
   isResultsBoxOpen(): boolean {
-    return !!(this.results.length || this.noResults);
+    // return !!(this.results.length || this.noResults);
+
+    return true;
   }
 
   setResults(results: Product[]): void {

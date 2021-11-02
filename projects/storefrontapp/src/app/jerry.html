@@ -14,4 +14,12 @@
   <div class="asm-title">
     {{ 'asm.mainTitle' | cxTranslate }}
   </div>
+
+  <div *ngIf="switch$ | async">
+    Hello
+  </div>
+
+  <button (click)="toggle()">
+    Click me
+  </button>
   

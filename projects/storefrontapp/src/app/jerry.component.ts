@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 // import { filter, map } from "rxjs/operators";
 
 @Component({
@@ -9,6 +9,19 @@ import { Observable } from "rxjs";
 export class JerryComponent{
   public foo = "";
   private _filter$ = new EventEmitter<string>();
+
+  private clicked:boolean = false;
+  switch$ = new Subject<boolean>();
+
+  toggle(){
+    if(this.clicked){
+      this.switch$.next(false);
+    }
+    else{
+      this.switch$.next(true);
+    }
+    this.clicked = !this.clicked;
+  }
 
   @Input()
   set filter(filter: string) {
