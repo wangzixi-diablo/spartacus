@@ -279,7 +279,10 @@ export class QuickOrderFormComponent implements OnInit, OnDestroy {
   protected watchProductAdd(): Subscription {
     return this.quickOrderService
       .getProductAdded()
-      .subscribe(() => this.clear());
+      .subscribe((data) => {
+        console.log('Jerry product Added: ', data);
+        this.clear();
+      });
   }
 
   ngOnDestroy(): void {

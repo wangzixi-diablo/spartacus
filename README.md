@@ -44,3 +44,7 @@
 
 1. 我的测试 Component: http://localhost:4299/electronics-spa/en/USD/jerry
 
+2. page-slot.module.ts 里修改 UI debug.
+page-layout.component.ts 
+
+3. 

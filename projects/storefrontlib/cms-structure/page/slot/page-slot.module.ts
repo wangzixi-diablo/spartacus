@@ -9,7 +9,7 @@ import { provideDefaultConfigFactory } from '@spartacus/core';
 
 export function jerryConfigFactory(){
   const config: ConfigUIDebug = {
-    switchOn:true
+    switchOn:false
   };
   return config;
 }

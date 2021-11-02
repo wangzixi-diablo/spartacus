@@ -9,12 +9,13 @@ import { PageLayoutService } from './page-layout.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageLayoutComponent {
-  public switchUIDebugOn: boolean = true;
+  public switchUIDebugOn: boolean = false;
   @Input() set section(value: string) {
     console.log("Jerry PageLayoutComponent is assigned section: ", value);
     this.section$.next(value);
   }
-  readonly section$: BehaviorSubject<string> = new BehaviorSubject(undefined);
+  // readonly section$: BehaviorSubject<string> = new BehaviorSubject(undefined);
+  readonly section$: BehaviorSubject<string> = new BehaviorSubject('');
 
   readonly templateName$: Observable<string> =
     this.pageLayoutService.templateName$;
@@ -36,7 +37,5 @@ export class PageLayoutComponent {
 
   constructor(protected pageLayoutService: PageLayoutService) {
     console.log('Jerry a new PageLayoutComponent is created!', this);
-
-
   }
 }
