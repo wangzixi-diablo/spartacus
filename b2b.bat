@@ -1,1 +1,1 @@
-set CX_B2B=true&& set CX_BASE_URL=https://20.83.184.244:9002&& yarn start
+set CX_B2B=true&& set CX_BASE_URL=https://localhost:9002&& yarn start

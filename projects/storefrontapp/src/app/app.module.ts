@@ -31,6 +31,7 @@ import { Router, RouterModule } from '@angular/router';
 import { JerryComponent } from './jerry.component';
 import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
 import { MyLibService } from 'feature-libs/my-lib/src/public-api';
+import { JerryOrderRootModule } from './jerryQuickOrder/jerry-order.module';
 // import { Exams } from 'first';
 
 registerLocaleData(localeDe);
@@ -54,6 +55,7 @@ if (!environment.production) {
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SpartacusModule,
+    JerryOrderRootModule,
     TestOutletModule, // custom usages of cxOutletRef only for e2e testing
     TestConfigModule.forRoot({ cookie: 'cxConfigE2E' }), // Injects config dynamically from e2e tests. Should be imported after other config modules.
 

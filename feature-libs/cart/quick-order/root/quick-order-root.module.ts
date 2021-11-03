@@ -3,6 +3,7 @@ import {
   provideDefaultConfig,
   provideDefaultConfigFactory,
   RoutingConfig,
+  CmsModule,
 } from '@spartacus/core';
 import { defaultQuickOrderConfig } from './config/default-quick-order.config';
 import {
@@ -34,7 +35,7 @@ export const defaultQuickOrderRoutingConfig: RoutingConfig = {
 };
 
 @NgModule({
-  imports: [],
+  imports: [CmsModule],
   providers: [
     provideDefaultConfigFactory(defaultQuickOrderComponentsConfig),
     provideDefaultConfig(defaultQuickOrderRoutingConfig),
