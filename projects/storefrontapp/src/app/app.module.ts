@@ -32,6 +32,7 @@ import { JerryComponent } from './jerry.component';
 import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
 import { MyLibService } from 'feature-libs/my-lib/src/public-api';
 import { JerryOrderRootModule } from './jerryQuickOrder/jerry-order.module';
+import { QuickOrderFacade } from '@spartacus/cart/quick-order/root';
 // import { Exams } from 'first';
 
 registerLocaleData(localeDe);
@@ -121,5 +122,8 @@ export class AppModule {
 
     this.myLibService.hello();
     // console.log('Jerry declare module: ', Exams);
+
+    const result = injector.get(QuickOrderFacade);
+    console.log('Jerry Facade result: ', result.getEntries());
   }
 }

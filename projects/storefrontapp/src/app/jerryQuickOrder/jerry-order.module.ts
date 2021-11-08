@@ -9,7 +9,7 @@ import { JerryOrderComponent } from './jerry-order.component';
 export const defaultJerryOrderRoutingConfig: RoutingConfig = {
   routing: {
     routes: {
-      quickOrder: {
+      quickOrderThisNameChanchange: {
         paths: ['my-account/jerry-order'],
       },
     },

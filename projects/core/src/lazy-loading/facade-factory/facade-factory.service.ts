@@ -108,6 +108,7 @@ export class FacadeFactoryService {
     properties,
     async,
   }: FacadeDescriptor<T>): T {
+    console.log('Jerry facade-factory service called: ', feature);
     const resolver$ = this.getResolver(feature, facade, async);
 
     const result: any = new (class extends (facade as any) {})();

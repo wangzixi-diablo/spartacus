@@ -5,6 +5,7 @@ import { CART_QUICK_ORDER_CORE_FEATURE } from '../feature-name';
 import { QuickOrderAddEntryEvent } from '../models/quick-order.model';
 
 export function quickOrderFacadeFactory() {
+  console.log('Jerry quickOrderFacadeFactory called!');
   return facadeFactory({
     facade: QuickOrderFacade,
     feature: CART_QUICK_ORDER_CORE_FEATURE,

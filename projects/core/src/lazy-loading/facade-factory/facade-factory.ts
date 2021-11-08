@@ -14,5 +14,9 @@ import { FacadeDescriptor } from './facade-descriptor';
 export function facadeFactory<T extends object>(
   descriptor: FacadeDescriptor<T>
 ): T {
-  return inject(FacadeFactoryService).create(descriptor);
+  console.log('Jerry in facadeFactory called: ', descriptor);
+
+  const injected = inject(FacadeFactoryService);
+  const created = injected.create(descriptor);
+  return created;
 }

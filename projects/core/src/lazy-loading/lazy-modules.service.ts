@@ -215,6 +215,7 @@ export class LazyModulesService implements OnDestroy {
   private resolveModuleFactory(
     moduleFunc: () => Promise<any>
   ): Observable<[NgModuleFactory<any>, any]> {
+    console.log('Jerry lazy load attempt triggered for: ', moduleFunc);
     return from(moduleFunc()).pipe(
       switchMap((module) =>
         module instanceof NgModuleFactory
