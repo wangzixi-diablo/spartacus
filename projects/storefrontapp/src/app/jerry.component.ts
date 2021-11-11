@@ -10,7 +10,7 @@ export class JerryComponent{
   public foo = "";
   private _filter$ = new EventEmitter<string>();
 
-  private clicked:boolean = false;
+  private clicked: boolean = false;
   switch$ = new Subject<boolean>();
 
   toggle(){

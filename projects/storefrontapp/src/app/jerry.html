@@ -9,17 +9,17 @@
       [(ngModel)]="filter"
       class="form-control"
     />
-  </div>
+</div>
 
-  <div class="asm-title">
+<div class="asm-title">
     {{ 'asm.mainTitle' | cxTranslate }}
-  </div>
+</div>
 
-  <div *ngIf="switch$ | async">
+<div *ngIf="switch$ | async">
     Hello
-  </div>
+</div>
 
-  <button (click)="toggle()">
+<button (click)="toggle()">
     Click me
-  </button>
+</button>
   
