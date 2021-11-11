@@ -7,7 +7,7 @@ import { ICON_TYPE } from '@spartacus/storefront';
 export class MyLibService {
 
   constructor() { }
-
+  
   public hello(){
     console.log('Hello Jerry!,', ICON_TYPE);
   }
