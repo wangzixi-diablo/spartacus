@@ -6,6 +6,7 @@
     "types": ["node"],
     "esModuleInterop": true,
     "paths": {
+      "@jerry/mylib": ["../../feature-libs/my-lib/src/public_api"],
       "@spartacus/setup": ["../../core-libs/setup/public_api"],
       "@spartacus/setup/ssr": ["../../core-libs/setup/ssr/public_api"],
       "@spartacus/asm/assets": ["../../feature-libs/asm/assets/public_api"],
@@ -266,7 +267,8 @@
       "@spartacus/assets": ["../../projects/assets/src/public_api"],
       "@spartacus/core": ["../../projects/core/public_api"],
       "@spartacus/incubator": ["../../projects/incubator/public_api"],
-      "@spartacus/storefront": ["../../projects/storefrontlib/public_api"]
+      "@spartacus/storefront": ["../../projects/storefrontlib/public_api"],
+      "test-lib": ["../../feature-libs/test-lib/src/public-api"],
     }
   },
   "angularCompilerOptions": {

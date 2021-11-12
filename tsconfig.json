@@ -63,6 +63,9 @@
       "@spartacus/cart/quick-order/core": [
         "feature-libs/cart/quick-order/core/public_api"
       ],
+      "jerry/mylib": [
+        "feature-libs/my-lib/src/public_api"
+      ],
       "@spartacus/cart/quick-order": [
         "feature-libs/cart/quick-order/public_api"
       ],
@@ -358,10 +361,14 @@
         "dist/my-lib/my-lib",
         "dist/my-lib"
       ],
-      "test-lib": [
+      "test-lib1": [
         "dist/test-lib/test-lib",
         "dist/test-lib"
-      ]
+      ],
+      "test-lib": [
+        "feature-libs/test-lib/src/public-api"
+      ],
+      
     }
   },
   "exclude": [
