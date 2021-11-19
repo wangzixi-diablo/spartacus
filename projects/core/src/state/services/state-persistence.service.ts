@@ -48,6 +48,10 @@ export class StatePersistenceService {
     storageType?: StorageSyncType;
     onRead?: (stateFromStorage: T | undefined) => void;
   }): Subscription {
+    console.log('Jerry SyncWithStorage: ', key);
+    if( key === 'cart'){
+      console.log('Jerry cart');
+    }
     const storage = getStorage(storageType, this.winRef);
 
     const subscriptions = new Subscription();

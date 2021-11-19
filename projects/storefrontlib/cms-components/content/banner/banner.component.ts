@@ -16,7 +16,10 @@ export class BannerComponent {
     tap((data) => (this.styleClasses = data.styleClasses))
   );
 
-  constructor(protected component: CmsComponentData<CmsBannerComponent>) {}
+  constructor(protected component: CmsComponentData<CmsBannerComponent>) {
+    this.component.data$.subscribe((data) =>
+    console.log('Jerry Banner data: ', data));
+  }
 
   /**
    * Returns `_blank` to force opening the link in a new window whenever the

@@ -62,7 +62,11 @@ export class QuickOrderComponent implements OnInit, OnDestroy {
     protected globalMessageService: GlobalMessageService,
     protected quickOrderService: QuickOrderFacade,
     protected quickOrderStatePersistenceService: QuickOrderStatePersistenceService
-  ) {}
+  ) {
+    console.log('Jerry in Quick Order Component constructor');
+    this.component.data$.subscribe((data) =>
+    console.log('Jerry Quick Order Data: ', data));
+  }
 
   ngOnInit(): void {
     this.cartId$ = this.activeCartService.getActiveCartId();

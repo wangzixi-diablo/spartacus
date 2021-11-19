@@ -10,6 +10,7 @@ export class CartValidationConnector {
   constructor(protected adapter: CartValidationAdapter) {}
 
   validate(cartId: string, userId: string): Observable<CartModificationList> {
+    console.log('Jerry validate cart: ', cartId);
     return this.adapter.validate(cartId, userId);
   }
 }

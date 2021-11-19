@@ -24,12 +24,15 @@ function isInLevel(level: string, version: string): boolean {
 }
 
 export function isFeatureLevel(config: Config, level: string): boolean {
+  let result = false;
   if (isFeatureConfig(config) && config.features.level) {
-    return level.startsWith('!')
+    result = level.startsWith('!')
       ? !isInLevel(config.features.level, level.substr(1, level.length))
       : isInLevel(config.features.level, level);
   }
-  return false;
+  console.log('Jerry check feature level: ', level,
+  ' config: ', config);
+  return result;
 }
 
 export function isFeatureEnabled(config: Config, feature: string): boolean {

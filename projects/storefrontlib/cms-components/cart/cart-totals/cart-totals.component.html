@@ -6,8 +6,7 @@
         [routerLink]="{ cxRoute: 'checkout' } | cxUrl"
         *ngIf="entries.length"
         class="btn btn-primary btn-block"
-        type="button"
-      >
+        type="button">
         {{ 'cartDetails.proceedToCheckout' | cxTranslate }}
       </button>
     </ng-container>
@@ -19,8 +18,7 @@
         [loading]="cartValidationInProgress"
         [disabled]="cartValidationInProgress"
         [class]="'btn btn-primary btn-block'"
-        (clikEvent)="disableButtonWhileNavigation()"
-      >
+        (clikEvent)="disableButtonWhileNavigation()">
         {{
           (!cartValidationInProgress ? 'cartDetails.proceedToCheckout' : '')
             | cxTranslate

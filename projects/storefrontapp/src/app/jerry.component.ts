@@ -1,4 +1,6 @@
 import { Component, Input, EventEmitter } from "@angular/core";
+import { defer, fromEvent, interval } from 'rxjs';
+
 import { Observable, Subject } from "rxjs";
 // import { filter, map } from "rxjs/operators";
 
@@ -7,12 +9,20 @@ import { Observable, Subject } from "rxjs";
     templateUrl: './jerry.html'
   })
 export class JerryComponent{
-  public foo = "";
+  public foo = "I am Parent";
   private _filter$ = new EventEmitter<string>();
 
   private clicked: boolean = false;
   switch$ = new Subject<boolean>();
 
+  constructor(){
+    const clicksOrInterval = defer(function () {
+      return Math.random() > 0.5
+        ? fromEvent(document, 'click')
+        : interval(1000);
+    });
+    clicksOrInterval.subscribe(x => console.log(x));
+  }
   toggle(){
     if(this.clicked){
       this.switch$.next(false);

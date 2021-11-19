@@ -27,6 +27,7 @@ export class ComponentDataProvider {
    * overridden with data retrieved from the cms service.
    */
   get<T>(uid: string, type?: string): Observable<T> {
+    console.log('Jerry in Component Data provider: ', uid);
     return defer(() => {
       let staticComponentData: T;
 

@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { translationChunksConfig, translations } from '@spartacus/assets';
-import { I18nModule,UrlModule } from '@spartacus/core';
+import { I18nModule,UrlModule, Config, LanguageService } from '@spartacus/core';
 
 import {
   FeaturesConfig,
@@ -23,7 +23,7 @@ import {
   //RoutingConfig,
   TestConfigModule
 } from '@spartacus/core';
-import { AppRoutingModule, StorefrontComponent } from '@spartacus/storefront';
+import { AppRoutingModule, StorefrontComponent, DirectionConfig, DirectionMode } from '@spartacus/storefront';
 import { environment } from '../environments/environment';
 import { TestOutletModule } from '../test-outlets/test-outlet.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
@@ -35,6 +35,7 @@ import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
 import { TestLibService } from 'test-lib';
 import { JerryOrderRootModule } from './jerryQuickOrder/jerry-order.module';
 import { QuickOrderFacade } from '@spartacus/cart/quick-order/root';
+import { ChildComponent } from './child.component';
 // import { Exams } from 'first';
 
 registerLocaleData(localeDe);
@@ -70,7 +71,7 @@ if (!environment.production) {
       },
     ])
   ],
-  declarations: [JerryComponent],
+  declarations: [JerryComponent, ChildComponent],
   providers: [
     provideConfig(<OccConfig>{
       backend: {
@@ -107,16 +108,30 @@ if (!environment.production) {
     }),
     provideConfig(<FeaturesConfig>{
       features: {
-        level: '4.2',
+        level: '4.2'
       },
+    }),
+    provideConfig(<DirectionConfig>{
+      direction: {
+        default: DirectionMode.LTR,
+        rtlLanguages: ['zh'],
+    }
     }),
   ],
   bootstrap: [StorefrontComponent],
 })
 export class AppModule {
   constructor(private router: Router,protected injector: Injector,
-    private myLibService: TestLibService
+    private myLibService: TestLibService,
+    private languageService: LanguageService,
+    private config: Config
     ){
+      this.languageService
+        .getActive()
+        .subscribe((isoCode: string) =>
+          console.log('Jerry language: ', isoCode));
+
+      console.log('Jerry global config: ', this.config);
     this.router.events.subscribe((data) => {
       console.log('Jerry route event: ', data);
     });

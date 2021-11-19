@@ -69,7 +69,7 @@ export class SiteContextComponentService {
 
   protected getService(
     context?: SiteContextType
-  ): Observable<SiteContext<any>> {
+  ): Observable<SiteContext<any>>  {
     return this.getContext(context).pipe(
       map((ctx: string) => (ctx ? this.getInjectedService(ctx) : undefined)),
       filter((s) => !!s)

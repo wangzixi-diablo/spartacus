@@ -53,8 +53,11 @@ export const componentsContextExistsSelectorFactory = (
 export const componentsDataSelectorFactory = (
   uid: string
 ): MemoizedSelector<StateWithCms, CmsComponent | undefined> => {
-  return createSelector(componentsContextSelectorFactory(uid), (state) =>
-    state ? state.component : undefined
+  return createSelector(componentsContextSelectorFactory(uid), (state) =>{
+    const result = state ? state.component : undefined;
+    console.log('Jerry fetch component data from State: ', uid, ' data: ', state);
+    return result;
+  }
   );
 };
 
