@@ -201,6 +201,7 @@ export class CheckoutEffects {
     ofType(CheckoutActions.SET_DELIVERY_MODE),
     map((action: any) => action.payload),
     mergeMap((payload) => {
+      console.log('Jerry set delivery mode: ', payload.selectedModeId);
       return this.checkoutDeliveryConnector
         .setMode(payload.userId, payload.cartId, payload.selectedModeId)
         .pipe(

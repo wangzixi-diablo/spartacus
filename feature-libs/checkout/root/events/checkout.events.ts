@@ -13,3 +13,14 @@ export class OrderPlacedEvent extends CxEvent {
    */
   code: string;
 }
+
+export class DeliveryModeEvent extends CxEvent {
+   /**
+   * Event's type
+   */
+  static readonly type = 'DeliveryModeEvent';
+  /**
+   * Order code
+   */
+  code: string;
+}

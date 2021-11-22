@@ -28,6 +28,8 @@ export class DeliveryModeComponent implements OnInit, OnDestroy {
   supportedDeliveryModes$: Observable<DeliveryMode[]>;
   selectedDeliveryMode$: Observable<DeliveryMode>;
   continueButtonPressed = false;
+  // Jerry enhanced
+  setModePressed = false;
 
   backBtnText = this.checkoutStepService.getBackBntText(this.activatedRoute);
 

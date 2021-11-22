@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StateEventService } from '@spartacus/core';
 import { CheckoutActions } from '../store/actions/index';
-import { OrderPlacedEvent } from '@spartacus/checkout/root';
+import { OrderPlacedEvent, DeliveryModeEvent } from '@spartacus/checkout/root';
 
 @Injectable()
 export class CheckoutEventBuilder {
@@ -14,6 +14,7 @@ export class CheckoutEventBuilder {
    */
   protected register(): void {
     this.orderPlacedEvent();
+    this.deliveryModeEvent();
   }
 
   /**
@@ -25,4 +26,15 @@ export class CheckoutEventBuilder {
       event: OrderPlacedEvent,
     });
   }
+
+  /**
+   * Register an order successfully placed event
+   */
+  protected deliveryModeEvent(): void {
+    this.stateEventService.register({
+      action: CheckoutActions.SET_DELIVERY_MODE_SUCCESS,
+      event: DeliveryModeEvent,
+    });
+  }
+
 }

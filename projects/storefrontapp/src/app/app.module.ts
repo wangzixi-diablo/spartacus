@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { translationChunksConfig, translations } from '@spartacus/assets';
-import { I18nModule,UrlModule, Config, LanguageService } from '@spartacus/core';
+import { I18nModule,UrlModule, Config, LanguageService, EventService } from '@spartacus/core';
 
 import {
   FeaturesConfig,
@@ -36,6 +36,7 @@ import { TestLibService } from 'test-lib';
 import { JerryOrderRootModule } from './jerryQuickOrder/jerry-order.module';
 import { QuickOrderFacade } from '@spartacus/cart/quick-order/root';
 import { ChildComponent } from './child.component';
+import { OrderPlacedEvent } from '@spartacus/checkout/root';
 // import { Exams } from 'first';
 
 registerLocaleData(localeDe);
@@ -124,14 +125,20 @@ export class AppModule {
   constructor(private router: Router,protected injector: Injector,
     private myLibService: TestLibService,
     private languageService: LanguageService,
-    private config: Config
+    private config: Config,
+    private events: EventService
     ){
+
+    const result$ = this.events.get(OrderPlacedEvent);
+      result$.subscribe((event) => console.log('Jerry order created: ', event));
+
       this.languageService
         .getActive()
         .subscribe((isoCode: string) =>
           console.log('Jerry language: ', isoCode));
 
-      console.log('Jerry global config: ', this.config);
+    console.log('Jerry global config: ', this.config);
+
     this.router.events.subscribe((data) => {
       console.log('Jerry route event: ', data);
     });

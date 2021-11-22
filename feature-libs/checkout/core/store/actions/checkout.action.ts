@@ -296,6 +296,7 @@ export class PlaceOrderSuccess extends StateUtils.EntitySuccessAction {
   readonly type = PLACE_ORDER_SUCCESS;
   constructor(public payload: Order) {
     super(PROCESS_FEATURE, PLACED_ORDER_PROCESS_ID);
+    console.log('Jerry congratulations, order created: ', payload);
   }
 }
 
