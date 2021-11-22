@@ -36,7 +36,7 @@ import { TestLibService } from 'test-lib';
 import { JerryOrderRootModule } from './jerryQuickOrder/jerry-order.module';
 import { QuickOrderFacade } from '@spartacus/cart/quick-order/root';
 import { ChildComponent } from './child.component';
-import { OrderPlacedEvent } from '@spartacus/checkout/root';
+import { DeliveryModeEvent } from '@spartacus/checkout/root';
 // import { Exams } from 'first';
 
 registerLocaleData(localeDe);
@@ -129,8 +129,9 @@ export class AppModule {
     private events: EventService
     ){
 
-    const result$ = this.events.get(OrderPlacedEvent);
-      result$.subscribe((event) => console.log('Jerry order created: ', event));
+    const result$ = this.events.get(DeliveryModeEvent);
+      result$.subscribe((event) =>
+      console.log('Jerry order delivery mode set success: ', event));
 
       this.languageService
         .getActive()
