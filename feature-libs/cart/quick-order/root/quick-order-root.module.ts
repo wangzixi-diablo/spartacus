@@ -3,8 +3,7 @@ import { RouterModule } from '@angular/router';
 import {
   provideDefaultConfig,
   provideDefaultConfigFactory,
-  RoutingConfig,
-  CmsModule,
+  RoutingConfig
 } from '@spartacus/core';
 import {
   CmsPageGuard,
