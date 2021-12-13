@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import localeDe from '@angular/common/locales/de';
 import localeJa from '@angular/common/locales/ja';
 import localeZh from '@angular/common/locales/zh';
@@ -29,7 +29,8 @@ import { TestOutletModule } from '../test-outlets/test-outlet.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
 import { Router, RouterModule } from '@angular/router';
 import { JerryComponent } from './jerry.component';
-import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
+
+// import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
 //import { MyLibService } from 'jerry/mylib';
 
 import { TestLibService } from 'test-lib';
@@ -82,11 +83,12 @@ if (!environment.production) {
         },
       },
     }),
-    {
+    // 启用之后，set delivery mode 之后的两个请求发送不出去了
+/*     {
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: CustomCacheInterceptor,
-    },
+    }, */
     /*
     provideConfig(<RoutingConfig>{
       // custom routing configuration for e2e testing
