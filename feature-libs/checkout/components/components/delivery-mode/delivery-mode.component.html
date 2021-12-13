@@ -9,6 +9,7 @@
         *ngIf="((supportedDeliveryModes$ | async)?.length 
         && !setModePressed); else loading"
       >
+      <ng-container *ngIf="loaded$ | async; else loading">
         <div
           class="form-check"
           *ngFor="let mode of supportedDeliveryModes$ | async"
@@ -35,6 +36,7 @@
           </label>
         </div>
       </ng-container>
+    </ng-container>
     </div>
   </div>
 
