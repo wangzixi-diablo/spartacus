@@ -35,6 +35,10 @@ export class DeliveryModeComponent implements OnInit, OnDestroy {
 
   deliveryModeSub: Subscription;
 
+  deliveryModeLoaded$ = this.checkoutDeliveryService
+    .getSetDeliveryModeProcess()
+    .pipe(map((state) => !state.loading));
+
   mode: FormGroup = this.fb.group({
     deliveryModeId: ['', Validators.required],
   });

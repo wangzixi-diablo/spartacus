@@ -9,9 +9,10 @@
         *ngIf="((supportedDeliveryModes$ | async)?.length 
         && !setModePressed); else loading"
       >
-        <div
+        <fieldset
           class="form-check"
           *ngFor="let mode of supportedDeliveryModes$ | async"
+          [disabled]="!(deliveryModeLoaded$ | async)"
         >
           <input
             class="form-check-input"
@@ -33,7 +34,7 @@
             </div>
             <div class="cx-delivery-details">{{ mode.description }}</div>
           </label>
-        </div>
+        </fieldset>
       </ng-container>
     </div>
   </div>
@@ -48,7 +49,10 @@
       <div class="col-md-12 col-lg-6">
         <button
           class="btn btn-block btn-primary"
-          [disabled]="deliveryModeInvalid"
+          [disabled]="
+          deliveryModeInvalid || !(deliveryModeLoaded$ | async)
+        "
+
           (click)="next()"
         >
           {{ 'common.continue' | cxTranslate }}
