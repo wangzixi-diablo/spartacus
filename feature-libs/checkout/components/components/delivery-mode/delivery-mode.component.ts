@@ -15,6 +15,7 @@ import {
   map,
   takeWhile,
   withLatestFrom,
+  tap,
 } from 'rxjs/operators';
 import { CheckoutConfigService } from '../../services/checkout-config.service';
 import { CheckoutStepService } from '../../services/checkout-step.service';
@@ -28,8 +29,15 @@ export class DeliveryModeComponent implements OnInit, OnDestroy {
   supportedDeliveryModes$: Observable<DeliveryMode[]>;
   selectedDeliveryMode$: Observable<DeliveryMode>;
   continueButtonPressed = false;
-  // Jerry enhanced
-  setModePressed = false;
+
+  deliveryModeChanged = false;
+  deliveryModeSetInProcess$ = this.checkoutDeliveryService.getSetDeliveryModeProcess().pipe(map(
+    (state) => state.loading
+  ), tap((isloading) => {
+    if( isloading === false){
+      this.deliveryModeChanged = false;
+    }
+  }));
 
   backBtnText = this.checkoutStepService.getBackBntText(this.activatedRoute);
 
@@ -104,6 +112,7 @@ export class DeliveryModeComponent implements OnInit, OnDestroy {
   }
 
   changeMode(code: string): void {
+    this.deliveryModeChanged = true;
     this.checkoutDeliveryService.setDeliveryMode(code);
   }
 
