@@ -42,9 +42,14 @@
 
 # Miscs
 
-1. 我的测试 Component: http://localhost:4299/electronics-spa/en/USD/jerry
+1. 我的测试 Component: http://localhost:4299/electronics-spa/en/USD/jerry, 但是 b2c.bat 里的 OCC API,需要设置成 https://localhost
 
 2. page-slot.module.ts 里修改 UI debug.
 page-layout.component.ts 
 
-3. 
+3. 自定义的 Component，需要在 b2b 模式下查看：
+
+http://localhost:4299/powertools-spa/en/USD/my-account/jerry-order
+
+![自定义](https://img-blog.csdnimg.cn/be55363c65354c7d8212e150705c7a4c.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5rGq5a2Q54aZ,size_20,color_FFFFFF,t_70,g_se,x_16)
+
