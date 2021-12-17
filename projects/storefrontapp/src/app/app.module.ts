@@ -33,7 +33,10 @@ import { JerryComponent } from './jerry.component';
 // import { CustomCacheInterceptor } from '../jerryExt/custom-http.interceptor';
 //import { MyLibService } from 'jerry/mylib';
 
-import { TestLibService } from 'test-lib';
+// lead to yarn:build error
+// projects/storefrontapp/src/app/app.module.ts:36:32 - error TS2307: Cannot find module 'test-lib' or its corresponding type declarations.
+
+//import { TestLibService } from 'test-lib';
 import { JerryOrderRootModule } from './jerryQuickOrder/jerry-order.module';
 import { QuickOrderFacade } from '@spartacus/cart/quick-order/root';
 import { ChildComponent } from './child.component';
@@ -125,7 +128,7 @@ if (!environment.production) {
 })
 export class AppModule {
   constructor(private router: Router,protected injector: Injector,
-    private myLibService: TestLibService,
+    // private myLibService: TestLibService,
     private languageService: LanguageService,
     private config: Config,
     private events: EventService
@@ -149,7 +152,7 @@ export class AppModule {
     const routeConfig: Router = this.injector.get(Router);
     console.log('Jerry Route config: ', routeConfig);
 
-    this.myLibService.hello();
+    // this.myLibService.hello();
 
     const result = injector.get(QuickOrderFacade);
     console.log('Jerry Facade result: ', result.getEntries());

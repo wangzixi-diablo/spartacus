@@ -97,6 +97,10 @@
     "bootstrap": "^4.3.1",
     "rxjs": "^6.6.0"
   },
+  "my-lib": {
+    "@angular/common": "^12.0.5",
+    "@angular/core": "^12.0.5"
+  },
   "@spartacus/order": {
     "@angular-devkit/schematics": "^12.0.5",
     "@angular/common": "^12.0.5",
@@ -189,6 +193,10 @@
     "@spartacus/storefront": "4.1.0-next.0",
     "bootstrap": "^4.3.1",
     "rxjs": "^6.6.0"
+  },
+  "test-lib": {
+    "@angular/common": "^12.0.5",
+    "@angular/core": "^12.0.5"
   },
   "@spartacus/tracking": {
     "@angular-devkit/schematics": "^12.0.5",
