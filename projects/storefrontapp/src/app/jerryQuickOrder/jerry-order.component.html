@@ -1,1 +1,6 @@
-<h1>Jerry Hello World</h1>
+<h1>Jerry</h1>
+<button (click)="loadForm('orbeon', 'dmv-14')">Load DMV-14 form</button>
+
+<button (click)="loadForm('orbeon', 'controls')">Load Controls form</button>
+
+<fr-form [app]="app" [form]="form" orbeonContext="/orbeon"></fr-form>

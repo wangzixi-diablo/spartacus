@@ -7,6 +7,7 @@
     "node": ">=12 <17"
   },
   "scripts": {
+    
     "build:analyze": "yarn build --stats-json && npx --yes webpack-bundle-analyzer dist/storefrontapp/stats.json",
     "build": "env-cmd --no-override -e dev,b2c,$SPA_ENV ng build storefrontapp --configuration production",
     "build:jerry": "env-cmd --no-override -e dev,b2c,$SPA_ENV ng build storefrontapp --configuration production --base-href /jerryspa/",
@@ -58,6 +59,7 @@
     "prettier": "prettier --config ./.prettierrc --list-different \"{projects,feature-libs,core-libs,integration-libs}/**/*{.ts,.js,.json,.scss,.html}\"",
     "prettier:fix": "prettier --config ./.prettierrc --list-different \"{projects,feature-libs,core-libs,integration-libs}/**/*{.ts,.js,.json,.scss,.html}\" --write",
     "start": "env-cmd --no-override -e dev,b2c,$SPA_ENV ng serve --port 4299",
+    "start:proxy": "env-cmd --no-override -e dev,b2c,$SPA_ENV ng serve --proxy-config proxy.conf.json",
     "start:prod": "env-cmd --no-override -e dev,b2c,$SPA_ENV ng serve --configuration production",
     "start:pwa": "cd ./dist/storefrontapp/ && http-server --silent --proxy http://localhost:4200? -p 4200",
     "test": "ng test",
